@@ -17,7 +17,8 @@ public class InitModTab extends ConsoleListener {
 		if (!e.getMessage().equalsIgnoreCase("launchertabpanel")) return;
 		if (!(e.getObject() instanceof LauncherTabPanel)) return;
 		
-		((LauncherTabPanel) e.getObject()).addTab("Mods", new ModTab());
+		LauncherTabPanel tabPanel = (LauncherTabPanel) e.getObject();
+		tabPanel.addTab("Mods", new ModTab(tabPanel.getMinecraftLauncher()));
 		
 	}
 	

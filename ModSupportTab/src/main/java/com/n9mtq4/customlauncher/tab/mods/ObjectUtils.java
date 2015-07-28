@@ -61,7 +61,7 @@ public class ObjectUtils {
 	 * @param file   the file
 	 * @throws Exception any errors that may have occur.
 	 */
-	public static void writeSerializable(Object object, File file) throws Exception {
+	public static void writeSerializable(Object object, File file) throws IOException {
 		
 		if (!(object instanceof Serializable))
 			throw new IllegalArgumentException("The object must be Serializable");

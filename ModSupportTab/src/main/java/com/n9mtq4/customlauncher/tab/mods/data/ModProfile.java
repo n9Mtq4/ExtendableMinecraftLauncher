@@ -36,4 +36,20 @@ public class ModProfile implements Serializable {
 		
 	}
 	
+	public String getProfileName() {
+		return profileName;
+	}
+	
+	public void setProfileName(String profileName) {
+		this.profileName = profileName;
+	}
+	
+	public ArrayList<ModEntry> getModList() {
+		return modList;
+	}
+	
+	public void setModList(ArrayList<ModEntry> modList) {
+		this.modList = modList;
+	}
+	
 }
