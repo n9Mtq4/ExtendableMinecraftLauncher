@@ -1,0 +1,6 @@
+com.n9mtq4.customlauncher.uihooks.GameLaunchHookSafe
+com.n9mtq4.customlauncher.uihooks.LauncherPanelHook
+com.n9mtq4.customlauncher.uihooks.PlayButtonHook
+com.n9mtq4.customlauncher.uihooks.PlayButtonPanelHook
+com.n9mtq4.customlauncher.uihooks.SwingUserInterfaceHook
+com.n9mtq4.customlauncher.uihooks.TabPanelHook

@@ -1,0 +1,35 @@
+group 'CustomMinecraftLauncher'
+version ''
+
+apply plugin: 'java'
+
+
+sourceCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('../CustomMinecraftLauncher/libs/LogWindowApi-4.jar')
+    compile files('../CustomMinecraftLauncher/libs/ReflectionHelper.jar')
+    compile files('../CustomMinecraftLauncher/Minecraft.jar')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.n9mtq4.customlauncher.launcher.CustomMinecraftLauncher'
+    }
+}
+
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+//    if the build succeeded
+    if (!state.failure && task.name.equalsIgnoreCase('build')) {
+//        copy the jar into the distro directory
+        copy {
+            from('build/libs/CustomLauncher.jar')
+            into('../CustomMinecraftLauncher/')
+        }
+    }
+}
+

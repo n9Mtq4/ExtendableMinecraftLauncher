@@ -1,0 +1,3 @@
+libs/LogWindowApi-4.jar
+libs/ReflectionHelper.jar
+Minecraft.jar

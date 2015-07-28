@@ -1,0 +1,12 @@
+rootProject.name = 'CustomMinecraftLauncher'
+include 'CustomLauncher'
+include 'BootstrapMaker'
+include 'Echoer'
+include 'Echoer'
+include 'ModSupportTab'
+include 'TabCreatorApi'
+include 'LauncherUiHooks'
+include 'SettingsTab'
+include 'SettingsTab'
+include 'NLauncherTab'
+
