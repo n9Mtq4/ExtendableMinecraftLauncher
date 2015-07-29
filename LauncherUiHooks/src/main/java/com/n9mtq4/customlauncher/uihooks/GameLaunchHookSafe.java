@@ -25,7 +25,7 @@ public class GameLaunchHookSafe extends ConsoleListener {
 		playButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e1) {
-				e.getBaseConsole().push("gamelaunch");
+				e.getBaseConsole().pushObject(e1, "gamelaunch");
 			}
 		});
 		

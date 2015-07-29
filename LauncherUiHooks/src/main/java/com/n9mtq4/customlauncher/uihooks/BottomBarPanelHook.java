@@ -7,24 +7,22 @@ import com.n9mtq4.console.lib.events.SentObjectEvent;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.ui.BottomBarPanel;
 import net.minecraft.launcher.ui.LauncherPanel;
-import net.minecraft.launcher.ui.bottombar.PlayButtonPanel;
 
 /**
- * Created by will on 7/27/15 at 6:23 PM.
+ * Created by will on 7/28/15 at 2:25 PM.
  */
-public class PlayButtonPanelHook extends ConsoleListener {
+public class BottomBarPanelHook extends ConsoleListener {
 	
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
-		if (!e.getMessage().equalsIgnoreCase("bottombarpanel")) return;
-		if (!(e.getObject() instanceof BottomBarPanel)) return;
+		if (!e.getMessage().equalsIgnoreCase("launcherpanel")) return;
+		if (!(e.getObject() instanceof LauncherPanel)) return;
 		
-		BottomBarPanel bottomBarPanel = (BottomBarPanel) e.getObject();
+		LauncherPanel launcherPanel = (LauncherPanel) e.getObject();
+		BottomBarPanel bottomBarPanel = ReflectionHelper.getObject("bottomBar", launcherPanel);
 		
-		PlayButtonPanel playButtonPanel = ReflectionHelper.getObject("playButtonPanel", bottomBarPanel);
-		
-		e.getBaseConsole().pushObject(playButtonPanel, "playbuttonpanel");
+		e.getBaseConsole().pushObject(bottomBarPanel, "bottombarpanel");
 		
 	}
 	
