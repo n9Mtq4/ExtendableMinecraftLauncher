@@ -30,9 +30,9 @@ public class BootstrapLauncher {
 //		show log if in debugmode
 		if (args.length >= 1 && args[0].equals("DEBUGBUILD")) {
 			baseConsole.addGui(new GuiJFrameLite());
+//			show System.out.print in baseconsole
+			baseConsole.redirectStdoutOn(true);
 		}
-//		show System.out.print in baseconsole
-		baseConsole.redirectStdoutOn(true);
 		
 //		add plugins
 		System.out.println(new File("plugins/").getAbsolutePath());

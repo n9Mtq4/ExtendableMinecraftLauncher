@@ -4,6 +4,7 @@ import com.n9mtq4.customlauncher.tab.mods.ModTab;
 import com.n9mtq4.customlauncher.tab.mods.data.ModData;
 
 import javax.swing.*;
+
 /**
  * Created by will on 7/28/15 at 11:25 AM.
  */

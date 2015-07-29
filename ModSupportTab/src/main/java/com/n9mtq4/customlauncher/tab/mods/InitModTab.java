@@ -25,7 +25,7 @@ public class InitModTab extends ConsoleListener {
 		
 		LauncherTabPanel tabPanel = (LauncherTabPanel) e.getObject();
 		ModTab modTab = new ModTab(tabPanel.getMinecraftLauncher());
-		tabPanel.addTab("Mods", modTab);
+		tabPanel.addTab("Jar Mods", modTab);
 		
 /*		TODO: priority LOW
 		TODO: find a way to get this to work
