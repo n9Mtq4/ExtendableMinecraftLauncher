@@ -51,6 +51,15 @@ public class ModData implements Serializable {
 		Profile[] profiles = new Profile[launcher.getProfileManager().getProfiles().values().size()];
 		launcher.getProfileManager().getProfiles().values().toArray(profiles);
 		
+		if (profiles.length == 0) {
+			try {
+				Thread.sleep(100);
+			}catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			return createNewModData(launcher);
+		}
+		
 		for (Profile profile : profiles) {
 			
 			ModProfile modProfile = new ModProfile(profile.getName());

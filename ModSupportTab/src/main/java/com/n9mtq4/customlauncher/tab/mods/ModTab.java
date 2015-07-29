@@ -3,6 +3,7 @@ package com.n9mtq4.customlauncher.tab.mods;
 import com.n9mtq4.customlauncher.tab.mods.data.ModData;
 import com.n9mtq4.customlauncher.tab.mods.table.ModsTable;
 import net.minecraft.launcher.Launcher;
+import net.minecraft.launcher.profile.ProfileManager;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -58,7 +59,11 @@ public class ModTab extends JSplitPane implements ListSelectionListener {
 		this.sideSplitPane.setBottomComponent(buttonPanel);
 		this.sideSplitPane.setResizeWeight(.9d);
 		
-		this.tableScroll = new JScrollPane(table);
+//		this.tableScroll = new JScrollPane(table);
+		
+//		TODO: NOT YET DONE MESSAGE
+		JLabel label = new JLabel("This mod tab is NOT finished. Please use the forge mod tab instead.");
+		this.tableScroll = new JScrollPane(label);
 		
 		this.setLeftComponent(sideSplitPane);
 		this.setRightComponent(tableScroll);
@@ -108,6 +113,12 @@ public class ModTab extends JSplitPane implements ListSelectionListener {
 	public void refresh() {
 		
 		
+		
+	}
+	
+	public void onProfilesRefreshed(ProfileManager profileManager) {
+		
+		selectOnList();
 		
 	}
 	
