@@ -21,6 +21,14 @@ public class ModProfile implements Serializable {
 		
 	}
 	
+	public void addMod(File file, boolean enabled) {
+		
+		ModEntry mod = new ModEntry(file);
+		mod.setEnabled(enabled);
+		modList.add(mod);
+		
+	}
+	
 	public void addMod(File file) {
 		
 		ModEntry mod = new ModEntry(file);

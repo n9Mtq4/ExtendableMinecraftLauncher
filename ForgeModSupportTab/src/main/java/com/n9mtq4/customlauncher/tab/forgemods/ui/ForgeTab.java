@@ -1,7 +1,11 @@
 package com.n9mtq4.customlauncher.tab.forgemods.ui;
 
+import com.n9mtq4.console.lib.BaseConsole;
+import com.n9mtq4.customlauncher.tab.forgemods.GameStartHook;
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModData;
+import com.n9mtq4.customlauncher.tab.forgemods.data.ModProfile;
 import com.n9mtq4.customlauncher.tab.forgemods.utils.FileBrowseUtils;
+import com.n9mtq4.customlauncher.tab.forgemods.utils.ForgeModManager;
 import net.minecraft.launcher.Launcher;
 
 import javax.swing.*;
@@ -11,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by will on 7/28/15 at 10:22 PM.
@@ -32,9 +37,9 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	private JButton removeProfile;
 	private JButton addMod;
 	private JButton removeMod;
-	private JButton editMod;
+//	private JButton editMod;
 	
-	public ForgeTab(Launcher launcher) {
+	public ForgeTab(Launcher launcher, BaseConsole baseConsole) {
 		
 		super(JSplitPane.HORIZONTAL_SPLIT);
 		
@@ -43,6 +48,18 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		
 		gui();
 		refreshList();
+		
+		try {
+			ForgeModManager.firstRunCleanup(launcher, modData, this);
+			modData.save();
+			refresh();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		baseConsole.addListener(new GameStartHook(launcher, modData));
+//		ConsoleListener listener = ReflectionHelper.callConstructor(GameStartHook.class, launcher, modData);
+//		baseConsole.addListener(listener);
 		
 	}
 	
@@ -117,7 +134,11 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		}else if (text.equalsIgnoreCase("install forge")) {
 			new InstallForgeDialog(this, launcher);
 		}else if (text.equalsIgnoreCase("new profile")) {
-			new CreateProfile(this, launcher);
+//			new CreateProfile(this, launcher);
+			String profileName = JOptionPane.showInputDialog(this, "What should the profile be called?");
+			ModProfile profile = new ModProfile(profileName);
+			modData.profiles.add(profile);
+			refresh();
 		}else if (text.equalsIgnoreCase("delete profile")) {
 			int sure = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete\nthe profile " + 
 					modData.getProfilesNames()[modData.selectedProfile] + "?", "Delete?", JOptionPane.YES_NO_OPTION);
@@ -127,11 +148,20 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 				refreshList();
 			}
 		}else if (text.equalsIgnoreCase("add mod")) {
-			File location = FileBrowseUtils.promptOpen();
-			if (location == null) return;
-			modData.profiles.get(modData.selectedProfile).addMod(location);
+			File mod = FileBrowseUtils.promptOpen(this);
+			if (mod == null) return;
+			modData.profiles.get(modData.selectedProfile).addMod(mod);
+/*			File[] mods = FileBrowseUtils.promptOpen(this);
+			if (mods == null) return;
+			if (mods.length == 0) return;
+			for (File mod : mods) {
+				modData.profiles.get(modData.selectedProfile).addMod(mod);
+			}*/
 			table.refreshModel();
 		}else if (text.equalsIgnoreCase("remove mod")) {
+			int row = table.getSelectedRow();
+			ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
+			selectedProfile.getModList().remove(row);
 			table.refreshModel();
 		}else if (text.equalsIgnoreCase("edit mod")) {
 //			deprecated button
@@ -143,6 +173,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		
 		modData.selectedProfile = list.getSelectedIndex();
+		table.refreshModel();
 		
 	}
 	
@@ -156,7 +187,8 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	
 	public void refresh() {
 		
-		
+		refreshList();
+		table.refreshModel();
 		
 	}
 	

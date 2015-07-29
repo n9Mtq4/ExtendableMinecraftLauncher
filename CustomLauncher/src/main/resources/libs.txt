@@ -1,4 +1,4 @@
+Minecraft.jar
 libs/LogWindowApi-4.jar
 libs/ReflectionHelper.jar
 libs/jsoup-1.8.2.jar
-Minecraft.jar

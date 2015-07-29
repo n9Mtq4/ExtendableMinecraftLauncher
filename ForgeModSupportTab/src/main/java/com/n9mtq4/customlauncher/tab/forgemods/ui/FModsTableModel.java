@@ -1,12 +1,17 @@
 package com.n9mtq4.customlauncher.tab.forgemods.ui;
 
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModData;
+import com.n9mtq4.customlauncher.tab.forgemods.data.ModEntry;
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModProfile;
 
+import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by will on 7/28/15 at 11:22 AM.
@@ -18,15 +23,22 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	private ModData modData;
 	private ForgeTab forgeTab;
 	private FModsTable table;
+	private boolean setBefore;
 	
 	public FModsTableModel(ModData modData, ForgeTab forgeTab, FModsTable table) {
 		this.modData = modData;
 		this.forgeTab = forgeTab;
 		this.table = table;
+		this.setBefore = false;
+	}
+	
+	protected void fireSet() {
+		if (setBefore) return;
+		setBefore = true;
+		refresh();
 		addTableModelListener(this);
 		table.getColumnModel().addColumnModelListener(this);
 		table.addComponentListener(this);
-		refresh();
 	}
 	
 	@Override
@@ -41,16 +53,18 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	
 	public void refresh() {
 		
+		if (modData.selectedProfile == -1) modData.selectedProfile = 0;
 		ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
 		Object[][] t = new Object[selectedProfile.getModList().size()][2];
 		
 		for (int i = 0; i < selectedProfile.getModList().size(); i++) {
 			t[i][0] = selectedProfile.getModList().get(i).isEnabled();
-			t[i][1] = selectedProfile.getModList().get(i).getName();
+//			t[i][1] = selectedProfile.getModList().get(i).getName();
+//			TODO: support for saving the mod list with the names
+			t[i][1] = selectedProfile.getModList().get(i).getFile().getAbsolutePath();
 		}
 		
-		Object[] headers = new Object[]{"Enabled", "Mod Name"};
-		setDataVector(t, headers);
+		setDataVector(t, new Object[]{"Enabled", "Mod File Location"});
 		
 	}
 	
@@ -65,7 +79,22 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	
 	protected void fireModDataSync() {
 		
+		ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
+		selectedProfile.setModList(new ArrayList<ModEntry>());
 		
+		fireSet();
+		for (int i = 0; i < table.getRowCount(); i++) {
+			boolean enabled = (Boolean) table.getValueAt(i, 0);
+			File file = new File((String) table.getValueAt(i, 1));
+			selectedProfile.addMod(file, enabled);
+		}
+		
+		try {
+			modData.save();
+		}catch (IOException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(table, "Error saving the ModData!", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 		
 	}
 	

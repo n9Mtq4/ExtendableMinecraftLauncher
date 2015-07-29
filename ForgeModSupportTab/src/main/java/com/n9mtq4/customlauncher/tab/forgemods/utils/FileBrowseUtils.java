@@ -2,6 +2,7 @@ package com.n9mtq4.customlauncher.tab.forgemods.utils;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
 import java.io.File;
 
 /**
@@ -9,12 +10,12 @@ import java.io.File;
  */
 public class FileBrowseUtils {
 	
-	public static File promptOpen() {
+	public static File promptOpen(Component component) {
 		JFileChooser chooser = new JFileChooser();
 		FileNameExtensionFilter fnef = new FileNameExtensionFilter("Mods (*.zip, *.jar)", "zip", "jar");
 		chooser.setFileFilter(fnef);
 		chooser.setDialogTitle("Choose Mod");
-		int returnVal = chooser.showOpenDialog(null);
+		int returnVal = chooser.showOpenDialog(component);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			return chooser.getSelectedFile();
 		}

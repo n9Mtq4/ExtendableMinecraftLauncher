@@ -64,12 +64,21 @@ public class ModData implements Serializable {
 		
 	}
 	
+	public ModProfile getProfileByName(String name) {
+		for (ModProfile profile : profiles) {
+			if (profile.getProfileName().equals(name)) return profile;
+		}
+		return null;
+	}
+	
 	public void save() throws IOException {
 		save(new File(modLocation));
 	}
 	
 	private void save(File file) throws IOException {
 		
+		//noinspection ResultOfMethodCallIgnored
+		file.getParentFile().mkdirs();
 		ObjectUtils.writeSerializable(this, file);
 		
 	}

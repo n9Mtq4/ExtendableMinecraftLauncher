@@ -22,6 +22,8 @@ public class FModsTable extends JTable {
 		this.model = new FModsTableModel(modData, forgeTab, this);
 		
 		setModel(model);
+		
+		model.fireSet();
 		 
 		getTableHeader().setReorderingAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

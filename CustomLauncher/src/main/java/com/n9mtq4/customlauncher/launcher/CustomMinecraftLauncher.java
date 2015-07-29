@@ -1,5 +1,6 @@
 package com.n9mtq4.customlauncher.launcher;
 
+import javax.swing.*;
 import java.io.*;
 
 /**
@@ -12,9 +13,42 @@ public class CustomMinecraftLauncher {
 	 * */
 	public static void main(String[] args) {
 		
+		checkBootstrap();
 		loadLibs();
 		
 		new BootstrapLauncher(args);
+		
+	}
+	
+	private static void checkBootstrap() {
+		
+		try {
+			
+//			turns file into BufferedReader
+			InputStream in = CustomMinecraftLauncher.class.getResourceAsStream("/libs.txt");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			String firstLine = reader.readLine();
+			
+			File bootstrap = new File(firstLine);
+			
+			if (!bootstrap.exists()) {
+				reader.close();
+				in.close();
+				throw new IOException("no Minecraft.jar");
+			}
+			reader.close();
+			in.close();
+			
+		}catch (IOException e) {
+			
+//			https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
+			JOptionPane.showMessageDialog(null, "There is no Minecraft Launcher. Please download the launcher Jar file from minecraft.net under\n" +
+					"\"Download it here\" > \"Show all platforms\" > \"Minecraft for Linux / Other\"",
+					"Error", JOptionPane.ERROR_MESSAGE);
+			
+			System.exit(1);
+			
+		}
 		
 	}
 	
@@ -42,6 +76,9 @@ public class CustomMinecraftLauncher {
 				}
 				
 			}
+			
+			reader.close();
+			in.close();
 			
 		}catch (IOException e) {
 			e.printStackTrace();

@@ -68,8 +68,8 @@ public class InstallForgeDialog {
 		select.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "After installing forge, a launcher restart\nis required.",
-						"Info", JOptionPane.INFORMATION_MESSAGE);
+//				JOptionPane.showMessageDialog(frame, "After installing forge, a launcher restart\nis required.", "Info", JOptionPane.INFORMATION_MESSAGE);
+				launcher.refreshVersionsAndProfiles();
 				File f = download(e);
 				run(f);
 				frame.dispose();
