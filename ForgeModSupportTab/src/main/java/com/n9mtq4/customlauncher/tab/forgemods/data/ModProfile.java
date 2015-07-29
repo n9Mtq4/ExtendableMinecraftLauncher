@@ -21,14 +21,6 @@ public class ModProfile implements Serializable {
 		
 	}
 	
-	public void addMod() {
-		
-		File file = null;
-//		TODO: open file browse
-		addMod(file);
-		
-	}
-	
 	public void addMod(File file) {
 		
 		ModEntry mod = new ModEntry(file);

@@ -19,11 +19,12 @@ public class FModsTable extends JTable {
 		
 		this.modData = modData;
 		this.forgeTab = forgeTab;
-		this.model = new FModsTableModel();
+		this.model = new FModsTableModel(modData, forgeTab, this);
 		
 		setModel(model);
-		
+		 
 		getTableHeader().setReorderingAllowed(false);
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 	}
 	
