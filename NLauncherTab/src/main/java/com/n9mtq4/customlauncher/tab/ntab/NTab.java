@@ -11,16 +11,11 @@ import javax.swing.*;
  */
 public class NTab extends JScrollPane {
 	
-	private LauncherTabPanel tabPanel;
-	private Launcher mcLauncher;
 	
 	private WebsiteTab rootPanel;
 	
 	public NTab(LauncherTabPanel tabPanel, Launcher mcLauncher) {
 		super();
-		
-		this.tabPanel = tabPanel;
-		this.mcLauncher = mcLauncher;
 		
 		this.rootPanel = new WebsiteTab(mcLauncher);
 		this.setViewportView(rootPanel);
@@ -28,7 +23,7 @@ public class NTab extends JScrollPane {
 		tabPanel.addTab("n9Mtq4", this);
 		tabPanel.setSelectedIndex(tabPanel.indexOfTab("n9Mtq4"));
 		
-		rootPanel.setPage("http://n9mtq4.com/UniqueMinecraftLauncher/webview.html");
+		rootPanel.setPage("http://n9mtq4.com/UniqueMinecraftLauncher/launcherview.html");
 		
 	}
 	
