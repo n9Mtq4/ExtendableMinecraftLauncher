@@ -37,6 +37,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	private JButton removeProfile;
 	private JButton addMod;
 	private JButton removeMod;
+//	@Deprecated
 //	private JButton editMod;
 	
 	public ForgeTab(Launcher launcher, BaseConsole baseConsole) {
@@ -108,6 +109,9 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		this.removeMod = new JButton("Remove Mod");
 //		this.editMod = new JButton("Edit Mod");
 		
+		addMod.setToolTipText("Add mods the the current profile.\n" +
+				"You can also drag and drop mods into the table.");
+		
 		buttonPanel.add(installForge);
 		buttonPanel.add(addProfile);
 		buttonPanel.add(removeProfile);
@@ -148,15 +152,14 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 				refreshList();
 			}
 		}else if (text.equalsIgnoreCase("add mod")) {
-			File mod = FileBrowseUtils.promptOpen(this);
-			if (mod == null) return;
-			modData.profiles.get(modData.selectedProfile).addMod(mod);
-/*			File[] mods = FileBrowseUtils.promptOpen(this);
-			if (mods == null) return;
+//			File mod = FileBrowseUtils.promptOpen(this);
+//			if (mod == null) return;
+//			modData.profiles.get(modData.selectedProfile).addMod(mod);
+			File[] mods = FileBrowseUtils.promptOpen(this);
 			if (mods.length == 0) return;
 			for (File mod : mods) {
 				modData.profiles.get(modData.selectedProfile).addMod(mod);
-			}*/
+			}
 			table.refreshModel();
 		}else if (text.equalsIgnoreCase("remove mod")) {
 			int row = table.getSelectedRow();

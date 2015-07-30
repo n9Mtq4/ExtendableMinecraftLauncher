@@ -10,16 +10,17 @@ import java.io.File;
  */
 public class FileBrowseUtils {
 	
-	public static File promptOpen(Component component) {
+	public static File[] promptOpen(Component component) {
 		JFileChooser chooser = new JFileChooser();
+		chooser.setMultiSelectionEnabled(true);
 		FileNameExtensionFilter fnef = new FileNameExtensionFilter("Mods (*.zip, *.jar)", "zip", "jar");
 		chooser.setFileFilter(fnef);
-		chooser.setDialogTitle("Choose Mod");
+		chooser.setDialogTitle("Choose Mod(s)");
 		int returnVal = chooser.showOpenDialog(component);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			return chooser.getSelectedFile();
+			return chooser.getSelectedFiles();
 		}
-		return null;
+		return new File[]{};
 	}
 	
 }

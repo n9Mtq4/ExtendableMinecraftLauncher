@@ -62,7 +62,17 @@ public class ModTab extends JSplitPane implements ListSelectionListener {
 //		this.tableScroll = new JScrollPane(table);
 		
 //		TODO: NOT YET DONE MESSAGE
-		JLabel label = new JLabel("This mod tab is NOT finished. Please use the forge mod tab instead.");
+		JTextArea label = new JTextArea("This mod tab is NOT finished. Please use the forge mod tab instead.\n" +
+				"This mod tab is 80% done in developer builds, but isn't stable enough yet and can't run on its own.\n" +
+				"Current Progress:\n" +
+				"[x] Mod managing\n" +
+				"[x] Receiving play button push\n" +
+				"[ ] Making a new profile\n" +
+				"[x] Unzipping version.jar\n" +
+				"[x] Copying files\n" +
+				"[x] Zipping version\n" +
+				"[ ] Renaming version");
+		label.setEditable(false);
 		this.tableScroll = new JScrollPane(label);
 		
 		this.setLeftComponent(sideSplitPane);

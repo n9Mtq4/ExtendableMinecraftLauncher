@@ -68,8 +68,8 @@ public class InstallForgeDialog {
 		select.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.showMessageDialog(frame, "After installing forge, a launcher restart\nis required.", "Info", JOptionPane.INFORMATION_MESSAGE);
-				launcher.refreshVersionsAndProfiles();
+				JOptionPane.showMessageDialog(frame, "After installing forge, a launcher restart\nis required.", "Info", JOptionPane.INFORMATION_MESSAGE);
+//				launcher.refreshVersionsAndProfiles();
 				File f = download(e);
 				run(f);
 				frame.dispose();
@@ -99,7 +99,7 @@ public class InstallForgeDialog {
 		String url = makeUrl(mcVersion, forgeVersion);
 		System.out.println(url);
 		
-		File file = new File("libs/forge_" + forgeVersion + ".jar");
+		File file = new File("tmp/forge_" + forgeVersion + ".jar");
 		Downloader.downloadFile(url, file);
 		return file;
 		

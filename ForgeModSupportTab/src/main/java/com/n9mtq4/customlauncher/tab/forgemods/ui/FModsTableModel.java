@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class FModsTableModel extends DefaultTableModel implements TableModelListener, TableColumnModelListener, ComponentListener {
 	
-	private static final int ENABLED_COLUMN_WIDTH = 80;
+	private static final int ENABLED_COLUMN_WIDTH = 60;
 	
 	private ModData modData;
 	private ForgeTab forgeTab;
@@ -53,6 +53,8 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	
 	public void refresh() {
 		
+//		TODO: dirty fix that doesn't allow remembering selected profile
+//		solve the issue that is creating the problem.
 		if (modData.selectedProfile == -1) modData.selectedProfile = 0;
 		ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
 		Object[][] t = new Object[selectedProfile.getModList().size()][2];
