@@ -25,7 +25,7 @@ public class CustomMinecraftLauncher {
 		try {
 			
 //			turns file into BufferedReader
-			InputStream in = CustomMinecraftLauncher.class.getResourceAsStream("/libs.txt");
+			InputStream in = CustomMinecraftLauncher.class.getResourceAsStream("/mclauncher.txt");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			String firstLine = reader.readLine();
 			
@@ -36,6 +36,11 @@ public class CustomMinecraftLauncher {
 				in.close();
 				throw new IOException("no Minecraft.jar");
 			}
+			
+//			load bootstrap
+			JarLoader.addFile(bootstrap);
+			System.out.println("Added " + bootstrap + " to the classpath");
+			
 			reader.close();
 			in.close();
 			
@@ -53,35 +58,25 @@ public class CustomMinecraftLauncher {
 	}
 	
 	/**
-	 * Adds every thing listed in the libs.txt file to the classpath
+	 * Adds every thing in libs/ to the classpath
 	 * */
 	private static void loadLibs() {
 		
-//		turns file into BufferedReader
-		InputStream in = CustomMinecraftLauncher.class.getResourceAsStream("/libs.txt");
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		
-		try {
+		File libDir = new File("libs/");
+		File[] libs = libDir.listFiles();
+		if (libs == null) return;
+		for (File file : libs) {
 			
-//			loops through every line
-			String line;
-			while ((line = reader.readLine()) != null) {
-				
-//				ignore blank lines and comments
-				if (!line.startsWith("#") && !line.trim().equals("")) {
-					
-//					add it to the classpath
-					JarLoader.addFile(new File(line));
-					
+//			checks to make sure its loadable
+			if (!file.isDirectory() && (file.getName().endsWith(".jar") || file.getName().endsWith(".zip")) && !file.getName().startsWith(".")) {
+				try {
+					JarLoader.addFile(file);
+					System.out.println("Succeeded in adding " + file.getAbsolutePath() + " as a library!");
+				}catch (IOException e) {
+					System.out.println("Failed to add " + file.getAbsolutePath() + " as a library!");
+					e.printStackTrace();
 				}
-				
 			}
-			
-			reader.close();
-			in.close();
-			
-		}catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 	}
