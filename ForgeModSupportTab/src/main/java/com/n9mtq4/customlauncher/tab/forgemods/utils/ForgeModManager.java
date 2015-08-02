@@ -31,6 +31,7 @@ public class ForgeModManager {
 			if (mod.isEnabled()) {
 				try {
 					copyFile(mod.getFile(), new File(modDir, mod.getName()));
+					System.out.println("Copyed: " + mod.getFile().getAbsolutePath());
 				}catch (IOException e) {
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Error setting up mod " + mod.getName() + "!", "Error", JOptionPane.ERROR_MESSAGE);

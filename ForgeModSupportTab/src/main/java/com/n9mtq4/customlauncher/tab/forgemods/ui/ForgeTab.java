@@ -20,6 +20,7 @@ import java.io.IOException;
 /**
  * Created by will on 7/28/15 at 10:22 PM.
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	
 	private Launcher launcher;
