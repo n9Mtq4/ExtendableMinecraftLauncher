@@ -10,10 +10,17 @@ import com.n9mtq4.reflection.ReflectionHelper;
 import java.util.ArrayList;
 
 /**
- * Created by will on 3/31/15.
+ * Created by will on 3/31/15.<br>
+ * This listener is for debugging purposes.
+ * It takes any String or Object that is pushed to the
+ * BaseConsole and prints it out so I can see it.
  */
 public class EchoListener extends ConsoleListener {
 	
+	/**
+	 * It is important that Echoer is the first listener, so use ReflectionHelper to 
+	 * accomplish that goal.
+	 * */
 	@Override
 	public void onEnable(EnableActionEvent e) {
 //		gets the listeners
@@ -26,12 +33,18 @@ public class EchoListener extends ConsoleListener {
 		e.getBaseConsole().println("Used hack to make Echoer the first listener");
 	}
 	
+	/**
+	 * Prints the string sent to the BaseConsole
+	 * */
 	@Override
 	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		baseConsole.println(consoleActionEvent.getCommand().getText());
 		
 	}
 	
+	/**
+	 * Prints the object sent to the BaseConsole
+	 * */
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		

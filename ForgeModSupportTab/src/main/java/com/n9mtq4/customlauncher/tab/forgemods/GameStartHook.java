@@ -12,11 +12,13 @@ import net.minecraft.launcher.Launcher;
 import java.awt.event.ActionEvent;
 
 /**
- * Created by will on 7/29/15 at 2:21 PM.
+ * Created by will on 7/29/15 at 2:21 PM.<br>
+ * This hooks into the game start event.
+ * When the game starts, we run the ForgeModManager class.
  * */
 public class GameStartHook extends ConsoleListener {
 	
-	private Launcher launcher;
+	private final Launcher launcher;
 	private ModData modData;
 	
 	public GameStartHook(Launcher launcher, ModData modData) {

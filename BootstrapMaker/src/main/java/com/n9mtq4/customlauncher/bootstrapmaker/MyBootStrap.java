@@ -17,7 +17,11 @@ import java.net.URLClassLoader;
 import static com.n9mtq4.console.lib.utils.ReflectionHelper.getObject;
 
 /**
- * Created by will on 3/28/15.
+ * Created by will on 3/28/15.<br>
+ * This class overrides Mojang's Bootstrap so rather than
+ * creating the Launcher in-scope, it saves it to a member field
+ * and pushes it to the BaseConsole so we can access it from the
+ * plugins.
  */
 public class MyBootStrap extends Bootstrap {
 	
@@ -48,6 +52,7 @@ public class MyBootStrap extends Bootstrap {
 			launcher = (Launcher) constructor.newInstance(this, workDir, proxy, proxyAuth, remanderArgs, 30);
 //			launcher = ReflectionHelper.callConstructor(aClass, this, workDir, proxy, proxyAuth, remanderArgs, 30);
 //			BootstrapEvent.fireMinecraftLauncherCreated(launcher);
+//			send the launcher to the base console!
 			parent.pushObject(launcher, "minecraftlauncher");
 		}catch (Exception e) {
 			throw new FatalBootstrapError("Unable to start: " + e);

@@ -31,8 +31,9 @@ public class InstallForgeDialog {
 	private static final String URL_PREFIX = "http://adfoc.us/serve/sitelinks/?id=271228&url=";
 	private static final String URL_FORMAT = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/%s/forge-%s-installer.jar";
 	
-	private ForgeTab forgeTab;
-	private Launcher launcher;
+	private final ForgeTab forgeTab;
+	@Deprecated
+	private final Launcher launcher;
 	
 	private JFrame frame;
 	private JButton select;
@@ -47,6 +48,9 @@ public class InstallForgeDialog {
 		
 	}
 	
+	/**
+	 * Handling the gui code to create the window to install forge.
+	 * */
 	private void gui() {
 		
 		frame = new JFrame("Select Forge Versions");
@@ -78,10 +82,15 @@ public class InstallForgeDialog {
 		
 	}
 	
+	/**
+	 * Runs the forge mod installer that was just downloaded
+	 * */
 	private void run(File file) {
 		try {
 			
+//			adds the jar so we can access it
 			JarLoader.addFile(file);
+//			start the install main method
 			SimpleInstaller.main(new String[]{});
 			
 		}catch (IOException e) {
@@ -91,7 +100,10 @@ public class InstallForgeDialog {
 		
 	}
 	
-	private File download(ActionEvent e) {
+	/**
+	 * Downloads the forge mod installer
+	 * */
+	private File download(final ActionEvent e) {
 		
 		int row = table.getSelectedRow();
 		String mcVersion = (String) table.getValueAt(row, 0);
@@ -112,14 +124,10 @@ public class InstallForgeDialog {
 		
 	}
 	
-	/*
-	* FORGE DOWNLOADS URL PARSER STARTS HERE | FORGE DOWNLOADS URL PARSER STARTS HERE
-	* FORGE DOWNLOADS URL PARSER STARTS HERE | FORGE DOWNLOADS URL PARSER STARTS HERE
-	* FORGE DOWNLOADS URL PARSER STARTS HERE | FORGE DOWNLOADS URL PARSER STARTS HERE
-	* FORGE DOWNLOADS URL PARSER STARTS HERE | FORGE DOWNLOADS URL PARSER STARTS HERE
-	* FORGE DOWNLOADS URL PARSER STARTS HERE | FORGE DOWNLOADS URL PARSER STARTS HERE
-	* */
-	
+	/**
+	 * Tries to download a list of forge versions
+	 * */
+//	TODO: full list with other minecraft versions
 	private static Object[][] getListOfForges() {
 		
 		try {

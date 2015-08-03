@@ -37,6 +37,9 @@ public class Cleaner extends ConsoleListener {
 		
 	}
 	
+	/**
+	 * Removes every file in the tmp/ directory.
+	 * */
 	private void clean(BaseConsole baseConsole) {
 		
 		File tmpDir = new File("tmp/");

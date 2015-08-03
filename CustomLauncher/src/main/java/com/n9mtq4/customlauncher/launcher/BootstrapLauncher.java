@@ -48,11 +48,12 @@ public class BootstrapLauncher {
 	 * */
 	private void makeBootstrap() {
 		
-		String s = "[args]";
+/*		String s = "[args]";
 		for (String s1 : args) {
 			s += " " + s1;
 		}
-		baseConsole.push(s);
+		baseConsole.push(s);*/
+		baseConsole.pushObject(args, "args");
 		baseConsole.push("[request] newbootstrap");
 		
 	}

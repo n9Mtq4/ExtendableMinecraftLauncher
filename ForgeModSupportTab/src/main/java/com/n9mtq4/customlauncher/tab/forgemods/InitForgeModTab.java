@@ -10,7 +10,9 @@ import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 import javax.swing.*;
 
 /**
- * Created by will on 7/28/15 at 10:16 PM.
+ * Created by will on 7/28/15 at 10:16 PM.<br>
+ * This listener creates the ForgeModTab when the launcher
+ * is started.
  */
 public class InitForgeModTab extends ConsoleListener {
 	

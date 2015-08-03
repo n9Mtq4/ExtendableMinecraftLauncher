@@ -16,10 +16,16 @@ public class CustomMinecraftLauncher {
 		checkBootstrap();
 		loadLibs();
 		
+//		initialize the base console and other things
 		new BootstrapLauncher(args);
 		
 	}
 	
+	/**
+	 * Makes sure that the linux / other launcher is present in
+	 * ./Minecraft.jar. It either adds it to the classpath or alerts the
+	 * user.
+	 * */
 	private static void checkBootstrap() {
 		
 		try {
@@ -31,12 +37,14 @@ public class CustomMinecraftLauncher {
 			
 			File bootstrap = new File(firstLine);
 			
+//			if Minecraft.jar doesn't exist
 			if (!bootstrap.exists()) {
 				reader.close();
 				in.close();
 				throw new IOException("no Minecraft.jar");
 			}
 			
+//			if it does exist
 //			load bootstrap
 			JarLoader.addFile(bootstrap);
 			System.out.println("Added " + bootstrap + " to the classpath");

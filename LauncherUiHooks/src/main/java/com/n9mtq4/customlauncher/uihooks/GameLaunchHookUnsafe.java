@@ -70,7 +70,9 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 					"WE WILL CONTINUE WITH SENDING THE EVENT TO THE ACTIONLISTENERS");
 		}
 		
-		if ((sentObjectEvent == null) ^ (!sentObjectEvent.isCanceled())) {
+//		makes sure that we send the button to mojang's listeners only if it hasn't canceled,
+//		but we also have to take into account the EventCapture failing.
+		if ((sentObjectEvent == null) || /*we know ? != null*/ (!sentObjectEvent.isCanceled())) {
 //			then we can let mojang's launcher handle it if necessary.
 			for (ActionListener listener : listeners) {
 				listener.actionPerformed(e);
@@ -85,7 +87,7 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 	 * */
 	public static class DefaultGameLaunchEventCapture extends ConsoleListener {
 		
-		private GameLaunchHookUnsafe parent;
+		private final GameLaunchHookUnsafe parent;
 		
 		public DefaultGameLaunchEventCapture(GameLaunchHookUnsafe parent) {
 			this.parent = parent;

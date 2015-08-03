@@ -25,6 +25,12 @@ import java.util.List;
  */
 public class BootstrapUtils {
 	
+	/**
+	 * Most of the code was written by Mojang.
+	 * All this does is instead of making a new Bootstrap
+	 * it makes a new MyBootStrap, which then has another hook.
+	 * @see MyBootStrap
+	 * */
 	protected static Bootstrap makeABootstrap(String[] args, BaseConsole console) throws IOException {
 		
 		System.setProperty("java.net.preferIPv4Stack", "true");
