@@ -2,6 +2,7 @@ package com.n9mtq4.customlauncher.uihooks;
 
 import com.n9mtq4.console.lib.BaseConsole;
 import com.n9mtq4.console.lib.ConsoleListener;
+import com.n9mtq4.console.lib.annotation.Async;
 import com.n9mtq4.console.lib.events.ConsoleActionEvent;
 import com.n9mtq4.console.lib.events.SentObjectEvent;
 import com.n9mtq4.reflection.ReflectionHelper;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  */
 public class SwingComponentHook extends ConsoleListener {
 	
+	@Async
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		

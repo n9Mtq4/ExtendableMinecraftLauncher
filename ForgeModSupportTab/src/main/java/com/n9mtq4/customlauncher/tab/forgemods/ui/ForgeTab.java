@@ -73,6 +73,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		this.list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.list.addListSelectionListener(this);
 		this.listScroll = new JScrollPane(list);
+		listScroll.setColumnHeaderView(new JLabel("<html><b>Profiles</b></html>"));
 		this.table = new FModsTable(modData, this);
 		buttons();
 		
