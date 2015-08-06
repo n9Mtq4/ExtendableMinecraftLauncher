@@ -53,6 +53,7 @@ public class MyBootStrap extends Bootstrap {
 //			launcher = ReflectionHelper.callConstructor(aClass, this, workDir, proxy, proxyAuth, remanderArgs, 30);
 //			BootstrapEvent.fireMinecraftLauncherCreated(launcher);
 //			send the launcher to the base console!
+			parent.pushObject(this, "jframe");
 			parent.pushObject(launcher, "minecraftlauncher");
 		}catch (Exception e) {
 			throw new FatalBootstrapError("Unable to start: " + e);

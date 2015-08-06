@@ -57,6 +57,7 @@ public class Cleaner extends ConsoleListener {
 //				when dealing loops, it is good to prevent one bad apple from
 //				spoiling the rest
 				e.printStackTrace();
+				baseConsole.printStackTrace(e);
 			}
 			
 		}
