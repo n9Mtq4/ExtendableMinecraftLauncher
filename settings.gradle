@@ -11,4 +11,5 @@ include 'NLauncherTab'
 include 'ForgeModSupportTab'
 include 'Cleaner'
 include 'updater'
+include 'AdvancedMCGameRunner'
 
