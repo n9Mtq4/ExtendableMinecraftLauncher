@@ -111,7 +111,10 @@ public class InstallForgeDialog {
 		String url = makeUrl(mcVersion, forgeVersion);
 		System.out.println(url);
 		
-		File file = new File("tmp/forge_" + forgeVersion + ".jar");
+		File tmpDir = new File("tmp/");
+		//noinspection ResultOfMethodCallIgnored
+		tmpDir.mkdirs();
+		File file = new File(tmpDir, "forge_" + forgeVersion + ".jar");
 		Downloader.downloadFile(url, file);
 		return file;
 		
