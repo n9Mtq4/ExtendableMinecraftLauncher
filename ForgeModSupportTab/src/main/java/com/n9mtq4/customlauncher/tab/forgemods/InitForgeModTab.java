@@ -1,10 +1,9 @@
 package com.n9mtq4.customlauncher.tab.forgemods;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
 import com.n9mtq4.customlauncher.tab.forgemods.ui.ForgeTab;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
 import javax.swing.*;
@@ -14,7 +13,7 @@ import javax.swing.*;
  * This listener creates the ForgeModTab when the launcher
  * is started.
  */
-public class InitForgeModTab extends ConsoleListener {
+public class InitForgeModTab implements ObjectListener {
 	
 	@Override
 	public void objectReceived(SentObjectEvent e, final BaseConsole baseConsole) {
@@ -31,11 +30,6 @@ public class InitForgeModTab extends ConsoleListener {
 				tabPanel.addTab("Forge Mods", forgeTab);
 			}
 		});
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

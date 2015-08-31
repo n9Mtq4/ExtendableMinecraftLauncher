@@ -1,10 +1,12 @@
 package com.n9mtq4.customlauncher.cleaner;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.DisableActionEvent;
-import com.n9mtq4.console.lib.events.EnableActionEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.ConsoleActionEvent;
+import com.n9mtq4.logwindow.events.DisableActionEvent;
+import com.n9mtq4.logwindow.events.EnableActionEvent;
+import com.n9mtq4.logwindow.listener.DisableListener;
+import com.n9mtq4.logwindow.listener.EnableListener;
+import com.n9mtq4.logwindow.listener.StringListener;
 
 import java.io.File;
 
@@ -12,7 +14,7 @@ import java.io.File;
  * Created by will on 7/30/15 at 1:15 PM.<br>
  * This listener cleans up the ExMCL folder
  */
-public class Cleaner extends ConsoleListener {
+public class Cleaner implements EnableListener, StringListener, DisableListener {
 	
 	@Override
 	public void onEnable(EnableActionEvent e) {

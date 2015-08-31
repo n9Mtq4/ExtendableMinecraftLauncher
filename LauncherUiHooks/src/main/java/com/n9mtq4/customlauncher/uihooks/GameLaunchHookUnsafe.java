@@ -1,10 +1,10 @@
 package com.n9mtq4.customlauncher.uihooks;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.AdditionActionEvent;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.AdditionActionEvent;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.AdditionListener;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
  * set the canceled flag to true, then we will send it to the listeners
  * we removed from before.
  */
-public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListener {
+public class GameLaunchHookUnsafe implements ActionListener, AdditionListener, ObjectListener {
 	
 	private ActionListener[] listeners;
 	private BaseConsole baseConsole;
@@ -30,7 +30,7 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 	
 	@Override
 	public void onAddition(AdditionActionEvent e) {
-		e.getBaseConsole().addListener(new DefaultGameLaunchEventCapture(this));
+		e.getBaseConsole().addListenerAttribute(new DefaultGameLaunchEventCapture(this));
 	}
 	
 	/**
@@ -59,12 +59,6 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 		playButton.addActionListener(this);
 		
 	}
-	
-	/**
-	 * ConsoleListener actionPerformed - don't do anything
-	 * */
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {}
 	
 	/**
 	 * ActionListener actionPerformed - push the ActionEvent to the baseConsole,
@@ -96,7 +90,7 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 	 * This class captures the SentObjectEvent and gives it to the parent.
 	 * This is so we can test if a listener has canceled the game launch event
 	 * */
-	public static class DefaultGameLaunchEventCapture extends ConsoleListener {
+	public static class DefaultGameLaunchEventCapture implements ObjectListener {
 		
 		private final GameLaunchHookUnsafe parent;
 		
@@ -112,11 +106,6 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 			if (!(e.getObject() instanceof ActionEvent)) return;
 			
 			parent.sentObjectEvent = e;
-			
-		}
-		
-		@Override
-		public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 			
 		}
 		

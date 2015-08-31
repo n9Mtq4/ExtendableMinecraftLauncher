@@ -1,9 +1,8 @@
 package com.n9mtq4.customlauncher.uihooks;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.ui.BottomBarPanel;
 import net.minecraft.launcher.ui.LauncherPanel;
@@ -11,7 +10,7 @@ import net.minecraft.launcher.ui.LauncherPanel;
 /**
  * Created by will on 7/28/15 at 2:25 PM.
  */
-public class BottomBarPanelHook extends ConsoleListener {
+public class BottomBarPanelHook implements ObjectListener {
 	
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
@@ -23,11 +22,6 @@ public class BottomBarPanelHook extends ConsoleListener {
 		BottomBarPanel bottomBarPanel = ReflectionHelper.getObject("bottomBar", launcherPanel);
 		
 		e.getBaseConsole().pushObject(bottomBarPanel, "bottombarpanel");
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

@@ -1,10 +1,11 @@
 package com.n9mtq4.customlauncher.gamerunner;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.EnableActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.EnableActionEvent;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.EnableListener;
+import com.n9mtq4.logwindow.listener.ListenerContainer;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.Launcher;
 
@@ -14,18 +15,20 @@ import java.util.ArrayList;
 /**
  * Created by will on 8/5/15 at 12:31 PM.
  */
-public class GameLaunchListener extends ConsoleListener {
+public class GameLaunchListener implements EnableListener, ObjectListener {
 	
 	private Launcher launcher;
 	
 	@Override
 	public void onEnable(EnableActionEvent e) {
 //		gets the listeners
-		ArrayList<ConsoleListener> l = ReflectionHelper.getObject("listeners", e.getBaseConsole());
-//		removes this listener from the list
-		l.remove(this);
-//		re-adds it first
-		l.add(this);
+		ArrayList<ListenerContainer> l = ReflectionHelper.getObject("listenerContainers", e.getBaseConsole());
+//		gets the listener container that is handling the methods for this listener
+		ListenerContainer container = e.getBaseConsole().getContainerFromAttribute(this);
+//		removes the container from the list
+		l.remove(container);
+//		re-adds it last
+		l.add(container);
 		e.getBaseConsole().println("Used hack to make GameLaunchListener the last listener");
 	}
 	
@@ -34,11 +37,6 @@ public class GameLaunchListener extends ConsoleListener {
 		
 		tryLauncherGet(e, baseConsole);
 		tryGameStart(e, baseConsole);
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

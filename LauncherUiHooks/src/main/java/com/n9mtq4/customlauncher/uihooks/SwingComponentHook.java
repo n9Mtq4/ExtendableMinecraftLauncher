@@ -1,10 +1,9 @@
 package com.n9mtq4.customlauncher.uihooks;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.annotation.Async;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.annotation.Async;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.SwingUserInterface;
 
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by will on 7/28/15 at 2:18 PM.
  */
-public class SwingComponentHook extends ConsoleListener {
+public class SwingComponentHook implements ObjectListener {
 	
 	@Async
 	@Override
@@ -30,11 +29,6 @@ public class SwingComponentHook extends ConsoleListener {
 		for (Component component : components) {
 			e.getBaseConsole().pushObject(component, "allcomponents");
 		}
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

@@ -1,9 +1,8 @@
 package com.n9mtq4.customlauncher.tab.mods.hook;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.Launcher;
 import net.minecraft.launcher.profile.Profile;
 
@@ -12,7 +11,7 @@ import java.io.*;
 /**
  * Created by will on 7/28/15 at 9:02 PM.
  */
-public class LauncherOpenHook extends ConsoleListener {
+public class LauncherOpenHook implements ObjectListener {
 	
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
@@ -26,11 +25,6 @@ public class LauncherOpenHook extends ConsoleListener {
 		if (!currentProfile.getLastVersionId().endsWith("_umcl")) {
 //			we need to make a new version!
 		}
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

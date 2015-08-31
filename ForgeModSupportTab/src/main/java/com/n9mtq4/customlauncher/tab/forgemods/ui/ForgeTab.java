@@ -1,11 +1,11 @@
 package com.n9mtq4.customlauncher.tab.forgemods.ui;
 
-import com.n9mtq4.console.lib.BaseConsole;
 import com.n9mtq4.customlauncher.tab.forgemods.GameStartHook;
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModData;
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModProfile;
 import com.n9mtq4.customlauncher.tab.forgemods.utils.FileBrowseUtils;
 import com.n9mtq4.customlauncher.tab.forgemods.utils.ForgeModManager;
+import com.n9mtq4.logwindow.BaseConsole;
 import net.minecraft.launcher.Launcher;
 
 import javax.swing.*;
@@ -59,7 +59,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 			e.printStackTrace();
 		}
 		
-		baseConsole.addListener(new GameStartHook(launcher, modData));
+		baseConsole.addListenerAttribute(new GameStartHook(launcher, modData));
 //		ConsoleListener listener = ReflectionHelper.callConstructor(GameStartHook.class, launcher, modData);
 //		baseConsole.addListener(listener);
 		

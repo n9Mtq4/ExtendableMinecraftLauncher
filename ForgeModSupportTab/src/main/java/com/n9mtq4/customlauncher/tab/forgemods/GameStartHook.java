@@ -1,12 +1,11 @@
 package com.n9mtq4.customlauncher.tab.forgemods;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModData;
 import com.n9mtq4.customlauncher.tab.forgemods.data.ModProfile;
 import com.n9mtq4.customlauncher.tab.forgemods.utils.ForgeModManager;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.Launcher;
 
 import java.awt.event.ActionEvent;
@@ -16,7 +15,7 @@ import java.awt.event.ActionEvent;
  * This hooks into the game start event.
  * When the game starts, we run the ForgeModManager class.
  * */
-public class GameStartHook extends ConsoleListener {
+public class GameStartHook implements ObjectListener {
 	
 	private final Launcher launcher;
 	private ModData modData;
@@ -37,11 +36,6 @@ public class GameStartHook extends ConsoleListener {
 		ForgeModManager.copyToMods(launcher, modProfile);
 		
 //		baseConsole.dispose();
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

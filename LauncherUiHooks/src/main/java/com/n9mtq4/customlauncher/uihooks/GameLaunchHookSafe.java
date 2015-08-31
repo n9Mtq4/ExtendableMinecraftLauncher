@@ -1,9 +1,8 @@
 package com.n9mtq4.customlauncher.uihooks;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by will on 7/27/15 at 5:57 PM.
  */
-public class GameLaunchHookSafe extends ConsoleListener {
+public class GameLaunchHookSafe implements ObjectListener {
 	
 	@Override
 	public void objectReceived(final SentObjectEvent e, BaseConsole baseConsole) {
@@ -28,11 +27,6 @@ public class GameLaunchHookSafe extends ConsoleListener {
 				e.getBaseConsole().pushObject(e1, "gamelaunch");
 			}
 		});
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

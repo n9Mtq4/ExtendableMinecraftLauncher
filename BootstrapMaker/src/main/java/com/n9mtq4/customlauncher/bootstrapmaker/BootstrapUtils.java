@@ -1,6 +1,6 @@
 package com.n9mtq4.customlauncher.bootstrapmaker;
 
-import com.n9mtq4.console.lib.BaseConsole;
+import com.n9mtq4.logwindow.BaseConsole;
 import com.n9mtq4.reflection.ReflectionHelper;
 import joptsimple.OptionException;
 import joptsimple.OptionParser;

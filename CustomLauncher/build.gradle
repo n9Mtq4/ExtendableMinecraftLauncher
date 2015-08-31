@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compile files('../CustomMinecraftLauncher/libs/LogWindowApi-4.jar')
+    compile files('../CustomMinecraftLauncher/libs/LogWindowFramework-5.jar')
     compile files('../CustomMinecraftLauncher/libs/ReflectionHelper.jar')
     compile files('../CustomMinecraftLauncher/Minecraft.jar')
 }

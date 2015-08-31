@@ -1,15 +1,14 @@
 package com.n9mtq4.customlauncher.uihooks;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.ConsoleTab;
 
 /**
  * Created by will on 8/4/15 at 10:16 PM.
  */
-public class ConsoleTabHook extends ConsoleListener {
+public class ConsoleTabHook implements ObjectListener {
 	
 	private ConsoleTab consoleTab;
 	
@@ -28,10 +27,6 @@ public class ConsoleTabHook extends ConsoleListener {
 			}
 		}
 		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 	}
 	
 }

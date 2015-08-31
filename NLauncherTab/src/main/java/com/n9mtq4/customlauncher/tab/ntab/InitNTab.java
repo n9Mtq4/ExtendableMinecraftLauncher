@@ -1,17 +1,16 @@
 package com.n9mtq4.customlauncher.tab.ntab;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.annotation.Async;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.annotation.Async;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.Launcher;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
 /**
  * Created by will on 7/27/15 at 6:58 PM.
  */
-public class InitNTab extends ConsoleListener {
+public class InitNTab implements ObjectListener {
 	
 	@Async
 	@Override
@@ -24,11 +23,6 @@ public class InitNTab extends ConsoleListener {
 		Launcher minecraftLauncher = launcherTabPanel.getMinecraftLauncher();
 		
 //		new NTab(launcherTabPanel, minecraftLauncher);
-		
-	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 	}
 	

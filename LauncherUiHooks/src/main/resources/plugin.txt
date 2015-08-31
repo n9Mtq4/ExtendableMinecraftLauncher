@@ -8,8 +8,8 @@ com.n9mtq4.customlauncher.uihooks.TabPanelHook
 
 # This listener tries to replace the SwingUserInterface
 # with a proxied one, although this can be dangerous and 
-# break some things.
-com.n9mtq4.customlauncher.uihooks.MinecraftUserInterfaceProxy
+# breaks some things.
+#com.n9mtq4.customlauncher.uihooks.MinecraftUserInterfaceProxy
 
 # This is the unsafe game launch hook
 # It allows for us to capture the event first,

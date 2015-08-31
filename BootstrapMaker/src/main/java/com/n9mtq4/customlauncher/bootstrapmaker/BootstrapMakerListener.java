@@ -1,8 +1,8 @@
 package com.n9mtq4.customlauncher.bootstrapmaker;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.ConsoleActionEvent;
+import com.n9mtq4.logwindow.listener.StringListener;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by will on 7/27/15 at 1:17 PM.<br>
  * Listeners for if a bootstrap is wanted.
  */
-public class BootstrapMakerListener extends ConsoleListener {
+public class BootstrapMakerListener implements StringListener {
 	
 	protected static String[] args = new String[]{};
 	

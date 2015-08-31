@@ -1,7 +1,7 @@
 package com.n9mtq4.customlauncher.gamerunner;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.utils.JarLoader;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.utils.JarLoader;
 import net.minecraft.launcher.Launcher;
 import net.minecraft.launcher.SwingUserInterface;
 import net.minecraft.launcher.game.GameLaunchDispatcher;

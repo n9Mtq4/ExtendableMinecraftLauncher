@@ -1,8 +1,8 @@
 package com.n9mtq4.customlauncher.tab.forgemods.ui;
 
-import com.n9mtq4.console.lib.command.ConsoleCommand;
-import com.n9mtq4.console.lib.utils.JarLoader;
 import com.n9mtq4.customlauncher.tab.forgemods.html.Downloader;
+import com.n9mtq4.logwindow.command.ConsoleCommand;
+import com.n9mtq4.logwindow.utils.JarLoader;
 import net.minecraft.launcher.Launcher;
 import net.minecraftforge.installer.SimpleInstaller;
 import org.jsoup.Jsoup;

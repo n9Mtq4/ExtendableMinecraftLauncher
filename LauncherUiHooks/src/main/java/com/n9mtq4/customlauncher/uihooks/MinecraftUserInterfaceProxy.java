@@ -1,10 +1,10 @@
 package com.n9mtq4.customlauncher.uihooks;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.ConsoleListener;
-import com.n9mtq4.console.lib.events.AdditionActionEvent;
-import com.n9mtq4.console.lib.events.ConsoleActionEvent;
-import com.n9mtq4.console.lib.events.SentObjectEvent;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.events.AdditionActionEvent;
+import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.listener.AdditionListener;
+import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.EnhancedProxy;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.Launcher;
@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 /**
  * Created by will on 8/5/15 at 5:09 PM.
  */
-public class MinecraftUserInterfaceProxy extends ConsoleListener implements EnhancedProxy.EnhancedInvocationHandler {
+public class MinecraftUserInterfaceProxy implements EnhancedProxy.EnhancedInvocationHandler, ObjectListener, AdditionListener {
 	
 	private BaseConsole baseConsole;
 	
@@ -37,9 +37,6 @@ public class MinecraftUserInterfaceProxy extends ConsoleListener implements Enha
 		ReflectionHelper.setObject(userInterface, "userInterface", launcher);
 		
 	}
-	
-	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {}
 	
 	@Override
 	public Object invoke(Object o, Object o1, Method method, Object[] objects) throws Throwable {

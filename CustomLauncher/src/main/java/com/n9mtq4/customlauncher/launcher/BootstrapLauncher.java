@@ -1,7 +1,7 @@
 package com.n9mtq4.customlauncher.launcher;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.gui.GuiJFrameLite;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.gui.GuiJFrameLite;
 
 import java.io.File;
 
@@ -29,7 +29,7 @@ public class BootstrapLauncher {
 		this.baseConsole = new BaseConsole();
 //		show log if in debugmode
 		if (args.length >= 1 && args[0].equals("DEBUGBUILD")) {
-			baseConsole.addGui(new GuiJFrameLite());
+			baseConsole.addGui(new GuiJFrameLite(baseConsole));
 //			show System.out.print in baseconsole
 			baseConsole.redirectStdoutOn(true);
 		}

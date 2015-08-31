@@ -1,7 +1,7 @@
 package com.n9mtq4.customlauncher.bootstrapmaker;
 
-import com.n9mtq4.console.lib.BaseConsole;
-import com.n9mtq4.console.lib.utils.JarLoader;
+import com.n9mtq4.logwindow.BaseConsole;
+import com.n9mtq4.logwindow.utils.JarLoader;
 import net.minecraft.bootstrap.Bootstrap;
 import net.minecraft.bootstrap.FatalBootstrapError;
 import net.minecraft.launcher.Launcher;
@@ -14,7 +14,7 @@ import java.net.Proxy;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-import static com.n9mtq4.console.lib.utils.ReflectionHelper.getObject;
+import static com.n9mtq4.logwindow.utils.ReflectionHelper.getObject;
 
 /**
  * Created by will on 3/28/15.<br>
