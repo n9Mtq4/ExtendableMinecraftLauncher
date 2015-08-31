@@ -142,10 +142,16 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		}else if (text.equalsIgnoreCase("new profile")) {
 //			new CreateProfile(this, launcher);
 			String profileName = JOptionPane.showInputDialog(this, "What should the profile be called?");
-			ModProfile profile = new ModProfile(profileName);
-			modData.profiles.add(profile);
-			refresh();
+			if (!profileName.trim().equals("")) {
+				ModProfile profile = new ModProfile(profileName);
+				modData.profiles.add(profile);
+				refresh();
+			}
 		}else if (text.equalsIgnoreCase("delete profile")) {
+			if (modData.profiles.get(modData.selectedProfile).getProfileName().equalsIgnoreCase("default")) {
+				JOptionPane.showMessageDialog(this, "You can't delete the default profile.", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			int sure = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete\nthe profile " + 
 					modData.getProfilesNames()[modData.selectedProfile] + "?", "Delete?", JOptionPane.YES_NO_OPTION);
 			if (sure == 0) {
