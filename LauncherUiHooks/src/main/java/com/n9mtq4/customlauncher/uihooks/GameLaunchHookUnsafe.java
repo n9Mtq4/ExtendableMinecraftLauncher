@@ -33,14 +33,20 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 		e.getBaseConsole().addListener(new DefaultGameLaunchEventCapture(this));
 	}
 	
+	/**
+	 * Gets the play button and adds the GameLaunchHook onto it.
+	 * */
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
+//		makes sure it is the playbutton
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
 		if (!(e.getObject() instanceof JButton)) return;
 		
+//		set the baseConsole
 		this.baseConsole = e.getBaseConsole();
 		
+//		get the button and listeners
 		JButton playButton = (JButton) e.getObject();
 		this.listeners = playButton.getActionListeners();
 //		remove all the action listeners on the button.
@@ -54,11 +60,16 @@ public class GameLaunchHookUnsafe extends ConsoleListener implements ActionListe
 		
 	}
 	
+	/**
+	 * ConsoleListener actionPerformed - don't do anything
+	 * */
 	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
-		
-	}
+	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {}
 	
+	/**
+	 * ActionListener actionPerformed - push the ActionEvent to the baseConsole,
+	 * then maybe send it to the listeners
+	 * */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
