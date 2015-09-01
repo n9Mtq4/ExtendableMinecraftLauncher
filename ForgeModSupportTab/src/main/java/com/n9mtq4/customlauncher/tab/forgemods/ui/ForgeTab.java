@@ -6,7 +6,7 @@ import com.n9mtq4.customlauncher.tab.forgemods.data.ModProfile;
 import com.n9mtq4.customlauncher.tab.forgemods.utils.FileBrowseUtils;
 import com.n9mtq4.customlauncher.tab.forgemods.utils.ForgeModManager;
 import com.n9mtq4.logwindow.BaseConsole;
-import net.minecraft.launcher.Launcher;
+import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -23,7 +23,7 @@ import java.io.IOException;
 @SuppressWarnings("FieldCanBeLocal")
 public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	
-	private final Launcher launcher;
+	private final LauncherTabPanel parent;
 	private ModData modData;
 	
 	private JList list;
@@ -41,25 +41,25 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 //	@Deprecated
 //	private JButton editMod;
 	
-	public ForgeTab(Launcher launcher, BaseConsole baseConsole) {
+	public ForgeTab(LauncherTabPanel parent, BaseConsole baseConsole) {
 		
 		super(JSplitPane.HORIZONTAL_SPLIT);
 		
-		this.launcher = launcher;
-		this.modData = ModData.load(launcher);
+		this.parent = parent;
+		this.modData = ModData.load(parent.getMinecraftLauncher());
 		
 		gui();
 		refreshList();
 		
 		try {
-			ForgeModManager.firstRunCleanup(launcher, modData, this);
+			ForgeModManager.firstRunCleanup(parent.getMinecraftLauncher(), modData, this);
 			modData.save();
 			refresh();
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		baseConsole.addListenerAttribute(new GameStartHook(launcher, modData));
+		baseConsole.addListenerAttribute(new GameStartHook(parent.getMinecraftLauncher(), modData));
 //		ConsoleListener listener = ReflectionHelper.callConstructor(GameStartHook.class, launcher, modData);
 //		baseConsole.addListener(listener);
 		
@@ -138,7 +138,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		if (text.equalsIgnoreCase("dev")) {
 			System.out.println("This is a placeholder for testing.");
 		}else if (text.equalsIgnoreCase("install forge")) {
-			new InstallForgeDialog(this, launcher);
+			new InstallForgeDialog(this);
 		}else if (text.equalsIgnoreCase("new profile")) {
 //			new CreateProfile(this, launcher);
 			String profileName = JOptionPane.showInputDialog(this, "What should the profile be called?");

@@ -25,6 +25,8 @@ import static com.n9mtq4.logwindow.utils.ReflectionHelper.getObject;
  */
 public class MyBootStrap extends Bootstrap {
 	
+	private static final int EMULATED_BOOTSTRAP_VERSION = 30;
+	
 	public Launcher launcher;
 	private BaseConsole parent;
 	
@@ -44,13 +46,13 @@ public class MyBootStrap extends Bootstrap {
 			File workDir = getObject("workDir", this, Bootstrap.class);
 			Proxy proxy = getObject("proxy", this, Bootstrap.class);
 			PasswordAuthentication proxyAuth = getObject("proxyAuth", this, Bootstrap.class);
-			String[] remanderArgs = getObject("remainderArgs", this, Bootstrap.class);
+			String[] remainderArgs = getObject("remainderArgs", this, Bootstrap.class);
 			
 			Class aClass = new URLClassLoader(new URL[] { launcherJar.toURI().toURL() }).loadClass("net.minecraft.launcher.Launcher");
 			Constructor constructor = aClass.getConstructor(JFrame.class, File.class, Proxy.class, PasswordAuthentication.class, String[].class, Integer.class);
 //			last int is the bootstrap version. were spoofing it so we aren't prompted to update
-			launcher = (Launcher) constructor.newInstance(this, workDir, proxy, proxyAuth, remanderArgs, 30);
-//			launcher = ReflectionHelper.callConstructor(aClass, this, workDir, proxy, proxyAuth, remanderArgs, 30);
+			launcher = (Launcher) constructor.newInstance(this, workDir, proxy, proxyAuth, remainderArgs, EMULATED_BOOTSTRAP_VERSION);
+//			launcher = ReflectionHelper.callConstructor(aClass, this, workDir, proxy, proxyAuth, remainderArgs, 30);
 //			BootstrapEvent.fireMinecraftLauncherCreated(launcher);
 //			send the launcher to the base console!
 			parent.pushObject(this, "jframe");

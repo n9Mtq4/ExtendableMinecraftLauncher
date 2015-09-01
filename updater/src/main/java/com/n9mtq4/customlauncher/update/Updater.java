@@ -20,7 +20,7 @@ public class Updater {
 //	private static final String TAG_NAME = "a0.0.2b2";
 //	private static final String REGEX_PARSER = "/\\[\\n  \\{|  \\},\\n  \\{/g";
 	
-	private static final int LOCAL_BUILD_ID = 2;
+	private static final int LOCAL_BUILD_ID = 3;
 	private static final String UPDATE_URL = "http://pastebin.com/raw.php?i=ejkgdBLA";
 	private static final String DL_UPDATE_URL = "https://github.com/n9Mtq4/ExtendableMinecraftLauncher/releases";
 	

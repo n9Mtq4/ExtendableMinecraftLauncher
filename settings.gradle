@@ -12,4 +12,6 @@ include 'ForgeModSupportTab'
 include 'Cleaner'
 include 'updater'
 include 'AdvancedMCGameRunner'
+include 'WorldManager'
+include 'TabCreatorApi'
 

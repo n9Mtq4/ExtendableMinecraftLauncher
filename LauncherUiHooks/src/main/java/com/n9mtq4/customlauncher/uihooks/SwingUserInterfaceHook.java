@@ -12,6 +12,8 @@ import net.minecraft.launcher.SwingUserInterface;
  */
 public class SwingUserInterfaceHook implements ObjectListener {
 	
+	private static final boolean HOOK_INTERFACE = true;
+	
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
@@ -19,6 +21,20 @@ public class SwingUserInterfaceHook implements ObjectListener {
 		if (!(e.getObject() instanceof Launcher)) return;
 		
 		SwingUserInterface ui = ReflectionHelper.getObject("userInterface", e.getObject());
+		
+		if (HOOK_INTERFACE) {
+			try {
+				Launcher launcher = (Launcher) e.getObject();
+//			HookedSwingUserInterface hookedSwingUserInterface = new HookedSwingUserInterface(launcher, ((SwingUserInterface) launcher.getUserInterface()).getFrame(), baseConsole);
+				HookedSwingUserInterface hookedSwingUserInterface = new HookedSwingUserInterface(ui, baseConsole);
+				ReflectionHelper.setObject(hookedSwingUserInterface, "userInterface", launcher);
+			}catch (Exception e1) {
+				e1.printStackTrace();
+				baseConsole.printStackTrace(e1);
+				System.err.println("SwingUserInterface Hook not working...");
+				baseConsole.println("SwingUserInterface Hook not working...");
+			}
+		}
 		
 		e.getBaseConsole().pushObject(ui, "swinguserinterface");
 		

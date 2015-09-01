@@ -3,7 +3,6 @@ package com.n9mtq4.customlauncher.tab.forgemods.ui;
 import com.n9mtq4.customlauncher.tab.forgemods.html.Downloader;
 import com.n9mtq4.logwindow.command.ConsoleCommand;
 import com.n9mtq4.logwindow.utils.JarLoader;
-import net.minecraft.launcher.Launcher;
 import net.minecraftforge.installer.SimpleInstaller;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -32,18 +31,14 @@ public class InstallForgeDialog {
 	private static final String URL_FORMAT = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/%s/forge-%s-installer.jar";
 	
 	private final ForgeTab forgeTab;
-	@Deprecated
-	private final Launcher launcher;
-	
 	private JFrame frame;
 	private JButton select;
 	private JTable table;
 	private JScrollPane scroll;
 	
-	public InstallForgeDialog(ForgeTab forgeTab, Launcher launcher) {
+	public InstallForgeDialog(ForgeTab forgeTab) {
 		
 		this.forgeTab = forgeTab;
-		this.launcher = launcher;
 		gui();
 		
 	}

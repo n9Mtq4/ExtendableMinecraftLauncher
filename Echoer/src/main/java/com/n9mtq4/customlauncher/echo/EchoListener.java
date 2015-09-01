@@ -11,6 +11,8 @@ import com.n9mtq4.logwindow.listener.StringListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Created by will on 3/31/15.<br>
@@ -52,7 +54,13 @@ public class EchoListener implements EnableListener, StringListener, ObjectListe
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
-		e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + e.getObject().getClass().getSimpleName() + ")");
+		if (e.getObject() instanceof Object[]) {
+			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + Arrays.toString((Object[]) e.getObject()) + ")");
+		}else if (e.getObject() instanceof Collection) {
+			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + Arrays.toString(((Collection) e.getObject()).toArray()) + ")");
+		}else {
+			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + e.getObjectType() + ")");
+		}
 		
 	}
 	
