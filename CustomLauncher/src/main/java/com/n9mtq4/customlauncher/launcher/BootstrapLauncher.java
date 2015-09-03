@@ -1,7 +1,8 @@
 package com.n9mtq4.customlauncher.launcher;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.gui.GuiJFrameLite;
+import com.n9mtq4.logwindow.managers.StdOutRedirection;
+import com.n9mtq4.logwindow.ui.GuiJFrameLite;
 
 import java.io.File;
 
@@ -31,7 +32,8 @@ public class BootstrapLauncher {
 		if (args.length >= 1 && args[0].equals("DEBUGBUILD")) {
 			baseConsole.addGui(new GuiJFrameLite(baseConsole));
 //			show System.out.print in baseconsole
-			baseConsole.redirectStdoutOn(true);
+//			baseConsole.redirectStdoutOn(true);
+			StdOutRedirection.addToBaseConsole(baseConsole, true);
 		}
 		
 //		add plugins

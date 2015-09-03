@@ -54,6 +54,7 @@ public class Cleaner implements EnableListener, StringListener, DisableListener 
 			try {
 				boolean success = file.delete();
 				baseConsole.println((success ? "Successfully" : "Failed to") + " deleted file " + file.getAbsolutePath());
+				System.out.println((success ? "Successfully" : "Failed to") + " deleted file " + file.getAbsolutePath());
 			}catch (Exception e) {
 //				just in case
 //				when dealing loops, it is good to prevent one bad apple from

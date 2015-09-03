@@ -142,6 +142,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		}else if (text.equalsIgnoreCase("new profile")) {
 //			new CreateProfile(this, launcher);
 			String profileName = JOptionPane.showInputDialog(this, "What should the profile be called?");
+			if (profileName == null) return;
 			if (!profileName.trim().equals("")) {
 				ModProfile profile = new ModProfile(profileName);
 				modData.profiles.add(profile);
@@ -172,6 +173,10 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		}else if (text.equalsIgnoreCase("remove mod")) {
 			int row = table.getSelectedRow();
 			ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
+			if (row < 0) {
+				JOptionPane.showMessageDialog(this, "You haven't selected a mod to remove!", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			selectedProfile.getModList().remove(row);
 			table.refreshModel();
 		}else if (text.equalsIgnoreCase("edit mod")) {

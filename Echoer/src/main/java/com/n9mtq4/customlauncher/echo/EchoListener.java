@@ -54,12 +54,17 @@ public class EchoListener implements EnableListener, StringListener, ObjectListe
 	@Override
 	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
+		if (e.getObject() == null) {
+			e.getBaseConsole().println("Object: " + e.getMessage() + " | (null)");
+			return;
+		}
+		
 		if (e.getObject() instanceof Object[]) {
 			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + Arrays.toString((Object[]) e.getObject()) + ")");
 		}else if (e.getObject() instanceof Collection) {
 			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + Arrays.toString(((Collection) e.getObject()).toArray()) + ")");
 		}else {
-			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + e.getObjectType() + ")");
+			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + e.getObject().toString() + ")");
 		}
 		
 	}
