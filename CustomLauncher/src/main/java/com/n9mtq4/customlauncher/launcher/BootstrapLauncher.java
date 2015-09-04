@@ -29,7 +29,7 @@ public class BootstrapLauncher {
 //		init baseconsole
 		this.baseConsole = new BaseConsole();
 //		show log if in debugmode
-		if (args.length >= 1 && args[0].equals("DEBUGBUILD")) {
+		if (contains(args, "DEBUGBUILD")) {
 			baseConsole.addGui(new GuiJFrameLite(baseConsole));
 //			show System.out.print in baseconsole
 //			baseConsole.redirectStdoutOn(true);
@@ -58,6 +58,13 @@ public class BootstrapLauncher {
 		baseConsole.pushObject(args, "args");
 		baseConsole.push("[request] newbootstrap");
 		
+	}
+	
+	private static boolean contains(String[] args, String key) {
+		for (String s : args) {
+			if (s.equals(key)) return true;
+		}
+		return false;
 	}
 	
 }
