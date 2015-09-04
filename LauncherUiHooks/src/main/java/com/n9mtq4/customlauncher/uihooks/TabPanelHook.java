@@ -10,14 +10,14 @@ import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 /**
  * Created by will on 7/27/15 at 5:56 PM.
  */
-public class TabPanelHook implements ObjectListener {
+public final class TabPanelHook implements ObjectListener {
 	
 	/**
 	 * This listens for the minecraft launcher to be sent,
 	 * and then sends a LauncherTabPanel back
 	 * */
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("launcherpanel")) return;
 		if (!(e.getObject() instanceof LauncherPanel)) return;

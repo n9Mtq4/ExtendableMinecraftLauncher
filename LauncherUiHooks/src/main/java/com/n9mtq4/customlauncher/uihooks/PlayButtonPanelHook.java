@@ -10,10 +10,10 @@ import net.minecraft.launcher.ui.bottombar.PlayButtonPanel;
 /**
  * Created by will on 7/27/15 at 6:23 PM.
  */
-public class PlayButtonPanelHook implements ObjectListener {
+public final class PlayButtonPanelHook implements ObjectListener {
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("bottombarpanel")) return;
 		if (!(e.getObject() instanceof BottomBarPanel)) return;

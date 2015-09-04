@@ -9,7 +9,7 @@ import java.io.File;
 /**
  * Created by will on 7/28/15 at 11:25 AM.
  */
-public class FModsTable extends JTable {
+public final class FModsTable extends JTable {
 	
 	private ModData modData;
 	private ForgeTab forgeTab;
@@ -48,28 +48,28 @@ public class FModsTable extends JTable {
 		
 	}
 	
-	public void refreshModel() {
+	public final void refreshModel() {
 		
 		model.refresh();
 		
 	}
 	
-	public void refreshTab() {
+	public final void refreshTab() {
 		
 		forgeTab.refresh();
 		
 	}
 	
-	public ModData getModData() {
+	public final ModData getModData() {
 		return modData;
 	}
 	
-	public ForgeTab getForgeTab() {
+	public final ForgeTab getForgeTab() {
 		return forgeTab;
 	}
 	
 	@Override
-	public FModsTableModel getModel() {
+	public final FModsTableModel getModel() {
 		return model;
 	}
 	

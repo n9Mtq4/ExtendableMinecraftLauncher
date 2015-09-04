@@ -10,10 +10,10 @@ import net.minecraft.launcher.ui.LauncherPanel;
 /**
  * Created by will on 7/28/15 at 2:25 PM.
  */
-public class BottomBarPanelHook implements ObjectListener {
+public final class BottomBarPanelHook implements ObjectListener {
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("launcherpanel")) return;
 		if (!(e.getObject() instanceof LauncherPanel)) return;

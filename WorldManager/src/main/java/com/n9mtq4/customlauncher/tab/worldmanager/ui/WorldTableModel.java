@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by will on 9/2/15 at 11:20 PM.
  */
-public class WorldTableModel extends DefaultTableModel {
+public final class WorldTableModel extends DefaultTableModel {
 	
 	private static File worldDir;
 	
@@ -24,17 +24,17 @@ public class WorldTableModel extends DefaultTableModel {
 	}
 	
 	@Override
-	public boolean isCellEditable(int row, int column) {
+	public final boolean isCellEditable(int row, int column) {
 		return false;
 	}
 	
 	@Override
-	public String getColumnName(int column) {
+	public final String getColumnName(int column) {
 		return "World Name";
 	}
 	
 	@Override
-	public Object getValueAt(int row, int column) {
+	public final Object getValueAt(int row, int column) {
 		
 		return worldNames.get(row);
 		

@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
  * set the canceled flag to true, then we will send it to the listeners
  * we removed from before.
  */
-public class GameLaunchHookUnsafe implements ActionListener, AdditionListener, ObjectListener {
+public final class GameLaunchHookUnsafe implements ActionListener, AdditionListener, ObjectListener {
 	
 	private ActionListener[] listeners;
 	private BaseConsole baseConsole;
@@ -37,7 +37,7 @@ public class GameLaunchHookUnsafe implements ActionListener, AdditionListener, O
 	 * Gets the play button and adds the GameLaunchHook onto it.
 	 * */
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 //		makes sure it is the playbutton
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
@@ -65,7 +65,7 @@ public class GameLaunchHookUnsafe implements ActionListener, AdditionListener, O
 	 * then maybe send it to the listeners
 	 * */
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public final void actionPerformed(ActionEvent e) {
 		
 //		send the event to people listening with the BaseConsole first.
 		baseConsole.pushObject(e, "gamelaunch");
@@ -90,7 +90,7 @@ public class GameLaunchHookUnsafe implements ActionListener, AdditionListener, O
 	 * This class captures the SentObjectEvent and gives it to the parent.
 	 * This is so we can test if a listener has canceled the game launch event
 	 * */
-	public static class DefaultGameLaunchEventCapture implements ObjectListener {
+	private final static class DefaultGameLaunchEventCapture implements ObjectListener {
 		
 		private final GameLaunchHookUnsafe parent;
 		
@@ -100,7 +100,7 @@ public class GameLaunchHookUnsafe implements ActionListener, AdditionListener, O
 		}
 		
 		@Override
-		public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+		public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 			
 			if (!e.getMessage().equalsIgnoreCase("gamelaunch")) return;
 			if (!(e.getObject() instanceof ActionEvent)) return;

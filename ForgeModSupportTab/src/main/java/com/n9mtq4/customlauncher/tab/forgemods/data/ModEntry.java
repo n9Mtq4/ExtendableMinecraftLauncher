@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Created by will on 7/28/15 at 11:01 AM.
  */
-public class ModEntry implements Serializable {
+public final class ModEntry implements Serializable {
 	
 	private static final long serialVersionUID = 3037764535520118680L;
 	
@@ -20,23 +20,23 @@ public class ModEntry implements Serializable {
 		
 	}
 	
-	public String getName() {
+	public final String getName() {
 		return file.getName();
 	}
 	
-	public File getFile() {
+	public final File getFile() {
 		return file;
 	}
 	
-	public void setFile(File file) {
+	public final void setFile(File file) {
 		this.file = file;
 	}
 	
-	public boolean isEnabled() {
+	public final boolean isEnabled() {
 		return enabled;
 	}
 	
-	public void setEnabled(boolean enabled) {
+	public final void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 	

@@ -10,10 +10,10 @@ import net.minecraft.launcher.ui.LauncherPanel;
 /**
  * Created by will on 7/27/15 at 6:04 PM.
  */
-public class LauncherPanelHook implements ObjectListener {
+public final class LauncherPanelHook implements ObjectListener {
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("swinguserinterface")) return;
 		if (!(e.getObject() instanceof SwingUserInterface)) return;

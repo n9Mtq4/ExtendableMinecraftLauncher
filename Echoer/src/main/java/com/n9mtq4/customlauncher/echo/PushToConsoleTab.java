@@ -13,7 +13,7 @@ import java.awt.*;
 /**
  * Created by will on 9/3/15 at 10:15 PM.
  */
-public class PushToConsoleTab implements ConsoleUI, ObjectListener {
+public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	
 //	has to be object because the Minecraft launcher hasn't been added yet.
 	private Object consoleTab = null;
@@ -21,7 +21,7 @@ public class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	private BaseConsole baseConsole;
 	
 	@Override
-	public void init() {
+	public final void init() {
 		
 		getConsoleTab = new GetConsoleTab();
 		baseConsole.addListenerAttribute(getConsoleTab);
@@ -29,23 +29,23 @@ public class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	}
 	
 	@Override
-	public void dispose() {
+	public final void dispose() {
 		
 	}
 	
 	@Override
-	public void print(String s, Colour colour) {
+	public final void print(String s, Colour colour) {
 		if (consoleTab == null) return;
 		((ConsoleTab) consoleTab).print(s);
 	}
 	
 	@Override
-	public void printImage(Image image) {
+	public final void printImage(Image image) {
 //		nothing
 	}
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("args") || !(e.getObject() instanceof String[])) return;
 		
@@ -67,7 +67,7 @@ public class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	
 	private class GetConsoleTab implements ObjectListener {
 		@Override
-		public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+		public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 			
 			if (!e.getMessage().equals("launchertabpanel") || !(e.getObject() instanceof LauncherTabPanel)) return;
 			

@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * Created by will on 8/31/15 at 11:42 PM.
  */
-public class WorldManagerTab extends JSplitPane {
+public final class WorldManagerTab extends JSplitPane {
 	
 	private final LauncherTabPanel parent;
 	private final BaseConsole baseConsole;

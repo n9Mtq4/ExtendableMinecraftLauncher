@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * Created by will on 7/27/15 at 6:41 PM.
  */
-public class SettingsTab extends JScrollPane {
+public final class SettingsTab extends JScrollPane {
 	
 	private JPanel panel;
 	

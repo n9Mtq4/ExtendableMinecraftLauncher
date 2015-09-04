@@ -9,10 +9,10 @@ import java.awt.event.ActionEvent;
 /**
  * Created by will on 7/28/15 at 9:01 PM.
  */
-public class GameLaunchHook implements ObjectListener {
+public final class GameLaunchHook implements ObjectListener {
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("gamelaunch")) return;
 		if (!(e.getObject() instanceof ActionEvent)) return;

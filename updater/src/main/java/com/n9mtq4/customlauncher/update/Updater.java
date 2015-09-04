@@ -14,7 +14,7 @@ import java.net.URL;
  */
 //TODO: use the github api and JSON to check for update
 //for now we use pastebin and Integer.parseInt
-public class Updater {
+public final class Updater {
 	
 //	private static final String UPDATE_URL = "https://api.github.com/repos/n9Mtq4/ExtendableMinecraftLauncher/releases";
 //	private static final String TAG_NAME = "a0.0.2b2";

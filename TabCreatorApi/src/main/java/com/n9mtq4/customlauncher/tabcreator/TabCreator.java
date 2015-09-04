@@ -10,12 +10,12 @@ import java.awt.*;
 /**
  * Created by will on 8/31/15 at 11:58 PM.
  */
-public class TabCreator implements ObjectListener {
+public final class TabCreator implements ObjectListener {
 	
 	private Object tabPanel;
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (tabPanel == null) tryToGetTabPanel(e, baseConsole);
 		else tryCreatingTab(e, baseConsole);

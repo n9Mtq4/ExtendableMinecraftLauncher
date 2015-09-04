@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by will on 7/28/15 at 10:59 AM.
  */
-public class ModProfile implements Serializable {
+public final class ModProfile implements Serializable {
 	
 	private static final long serialVersionUID = 681991166449772962L;
 	
@@ -21,7 +21,7 @@ public class ModProfile implements Serializable {
 		
 	}
 	
-	public void addMod() {
+	public final void addMod() {
 		
 		File file = null;
 //		TODO: open file browse
@@ -29,26 +29,26 @@ public class ModProfile implements Serializable {
 		
 	}
 	
-	public void addMod(File file) {
+	public final void addMod(File file) {
 		
 		ModEntry mod = new ModEntry(file);
 		modList.add(mod);
 		
 	}
 	
-	public String getProfileName() {
+	public final String getProfileName() {
 		return profileName;
 	}
 	
-	public void setProfileName(String profileName) {
+	public final void setProfileName(String profileName) {
 		this.profileName = profileName;
 	}
 	
-	public ArrayList<ModEntry> getModList() {
+	public final ArrayList<ModEntry> getModList() {
 		return modList;
 	}
 	
-	public void setModList(ArrayList<ModEntry> modList) {
+	public final void setModList(ArrayList<ModEntry> modList) {
 		this.modList = modList;
 	}
 	

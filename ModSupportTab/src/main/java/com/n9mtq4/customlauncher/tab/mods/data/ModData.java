@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by will on 7/28/15 at 10:58 AM.
  */
-public class ModData implements Serializable {
+public final class ModData implements Serializable {
 	
 	private static final long serialVersionUID = 5773989385187164854L;
 	private static final String modLocation = "mods.dat";
@@ -82,14 +82,14 @@ public class ModData implements Serializable {
 		
 	}
 	
-	public ModProfile getProfileByName(String name) {
+	public final ModProfile getProfileByName(String name) {
 		for (ModProfile profile : profiles) {
 			if (profile.getProfileName().equals(name)) return profile;
 		}
 		return null;
 	}
 	
-	public void save() throws IOException {
+	public final void save() throws IOException {
 		save(new File(modLocation));
 	}
 	
@@ -99,7 +99,7 @@ public class ModData implements Serializable {
 		
 	}
 	
-	public Object[] getProfilesNames() {
+	public final Object[] getProfilesNames() {
 		
 		String[] profileNames = new String[this.profiles.size()];
 		for (int i = 0; i < this.profiles.size(); i++) {

@@ -12,11 +12,11 @@ import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
  * This listener creates the ForgeModTab when the launcher
  * is started.
  */
-public class InitForgeModTab implements ObjectListener {
+public final class InitForgeModTab implements ObjectListener {
 	
 	@Async
 	@Override
-	public void objectReceived(final SentObjectEvent e, final BaseConsole baseConsole) {
+	public final void objectReceived(final SentObjectEvent e, final BaseConsole baseConsole) {
 		
 		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			

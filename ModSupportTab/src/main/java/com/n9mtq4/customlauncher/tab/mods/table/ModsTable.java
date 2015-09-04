@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * Created by will on 7/28/15 at 11:25 AM.
  */
-public class ModsTable extends JTable {
+public final class ModsTable extends JTable {
 	
 	private ModData modData;
 	private ModTab modTab;
@@ -28,28 +28,28 @@ public class ModsTable extends JTable {
 		
 	}
 	
-	public void refreshModel() {
+	public final void refreshModel() {
 		
 		model.refresh();
 		
 	}
 	
-	public void refreshTab() {
+	public final void refreshTab() {
 		
 		modTab.refresh();
 		
 	}
 	
-	public ModData getModData() {
+	public final ModData getModData() {
 		return modData;
 	}
 	
-	public ModTab getModTab() {
+	public final ModTab getModTab() {
 		return modTab;
 	}
 	
 	@Override
-	public ModsTableModel getModel() {
+	public final ModsTableModel getModel() {
 		return model;
 	}
 	

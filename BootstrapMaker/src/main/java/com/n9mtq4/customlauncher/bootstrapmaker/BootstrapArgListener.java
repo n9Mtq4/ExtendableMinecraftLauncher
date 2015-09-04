@@ -11,13 +11,13 @@ import com.n9mtq4.logwindow.listener.ObjectListener;
  * onto BootstrapMaker for allowing the MC Launcher to get them too.
  */
 //TODO: not working properly
-public class BootstrapArgListener implements ObjectListener {
+public final class BootstrapArgListener implements ObjectListener {
 	
 	/**
 	 * Receives args from BootstrapLauncher
 	 * */
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("args")) return;
 		if (!(e.getObject() instanceof String[])) return;

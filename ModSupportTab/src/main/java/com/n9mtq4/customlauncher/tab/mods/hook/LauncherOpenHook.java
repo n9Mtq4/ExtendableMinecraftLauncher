@@ -11,10 +11,10 @@ import java.io.*;
 /**
  * Created by will on 7/28/15 at 9:02 PM.
  */
-public class LauncherOpenHook implements ObjectListener {
+public final class LauncherOpenHook implements ObjectListener {
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("minecraftlauncher")) return;
 		if (!(e.getObject() instanceof Launcher)) return;

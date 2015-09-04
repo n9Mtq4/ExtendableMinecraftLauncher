@@ -20,14 +20,14 @@ import java.util.Collection;
  * It takes any String or Object that is pushed to the
  * BaseConsole and prints it out so I can see it.
  */
-public class EchoListener implements EnableListener, StringListener, ObjectListener {
+public final class EchoListener implements EnableListener, StringListener, ObjectListener {
 	
 	/**
 	 * It is important that Echoer is the first listener, so use ReflectionHelper to 
 	 * accomplish that goal.
 	 * */
 	@Override
-	public void onEnable(EnableActionEvent e) {
+	public final void onEnable(EnableActionEvent e) {
 //		gets the listeners
 		ArrayList<ListenerContainer> l = ReflectionHelper.getObject("listenerContainers", e.getBaseConsole());
 //		gets the listener container that is handling the methods for this listener
@@ -43,7 +43,7 @@ public class EchoListener implements EnableListener, StringListener, ObjectListe
 	 * Prints the string sent to the BaseConsole
 	 * */
 	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
+	public final void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		baseConsole.println(consoleActionEvent.getCommand().getText());
 		
 	}
@@ -52,7 +52,7 @@ public class EchoListener implements EnableListener, StringListener, ObjectListe
 	 * Prints the object sent to the BaseConsole
 	 * */
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (e.getObject() == null) {
 			e.getBaseConsole().println("Object: " + e.getMessage() + " | (null)");

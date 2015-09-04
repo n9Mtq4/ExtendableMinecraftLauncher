@@ -19,7 +19,7 @@ import java.io.IOException;
 /**
  * Created by will on 7/28/15 at 10:58 PM.
  */
-public class InstallForgeDialog {
+public final class InstallForgeDialog {
 	
 	/*
 	* Example forge download url

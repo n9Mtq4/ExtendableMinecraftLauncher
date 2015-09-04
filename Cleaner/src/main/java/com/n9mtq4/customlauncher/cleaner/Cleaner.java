@@ -14,17 +14,17 @@ import java.io.File;
  * Created by will on 7/30/15 at 1:15 PM.<br>
  * This listener cleans up the ExMCL folder
  */
-public class Cleaner implements EnableListener, StringListener, DisableListener {
+public final class Cleaner implements EnableListener, StringListener, DisableListener {
 	
 	@Override
-	public void onEnable(EnableActionEvent e) {
+	public final void onEnable(EnableActionEvent e) {
 		
 		clean(e.getBaseConsole());
 		
 	}
 	
 	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
+	public final void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 		if (consoleActionEvent.getCommand().getArg(0).equalsIgnoreCase("cleanup")) {
 			clean(baseConsole);
@@ -33,7 +33,7 @@ public class Cleaner implements EnableListener, StringListener, DisableListener 
 	}
 	
 	@Override
-	public void onDisable(DisableActionEvent e) {
+	public final void onDisable(DisableActionEvent e) {
 		
 		clean(e.getBaseConsole());
 		

@@ -13,7 +13,7 @@ import java.awt.*;
 /**
  * Created by will on 7/27/15 at 3:00 PM.
  */
-public class ModTab extends JSplitPane implements ListSelectionListener {
+public final class ModTab extends JSplitPane implements ListSelectionListener {
 	
 	private Launcher launcher;
 	private ModData modData;
@@ -106,7 +106,7 @@ public class ModTab extends JSplitPane implements ListSelectionListener {
 	}
 	
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
+	public final void valueChanged(ListSelectionEvent e) {
 		
 		String newProfileName = (String) list.getSelectedValue();
 		launcher.getProfileManager().setSelectedProfile(newProfileName);
@@ -120,13 +120,13 @@ public class ModTab extends JSplitPane implements ListSelectionListener {
 		
 	}
 	
-	public void refresh() {
+	public final void refresh() {
 		
 		
 		
 	}
 	
-	public void onProfilesRefreshed(ProfileManager profileManager) {
+	public final void onProfilesRefreshed(ProfileManager profileManager) {
 		
 		selectOnList();
 		

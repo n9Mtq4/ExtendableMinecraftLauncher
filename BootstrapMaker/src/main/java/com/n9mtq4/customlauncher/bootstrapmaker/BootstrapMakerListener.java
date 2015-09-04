@@ -10,7 +10,7 @@ import java.io.IOException;
  * Created by will on 7/27/15 at 1:17 PM.<br>
  * Listeners for if a bootstrap is wanted.
  */
-public class BootstrapMakerListener implements StringListener {
+public final class BootstrapMakerListener implements StringListener {
 	
 	protected static String[] args = new String[]{};
 	
@@ -18,7 +18,7 @@ public class BootstrapMakerListener implements StringListener {
 	 * Listens for when a new bootstrap is needed
 	 * */
 	@Override
-	public void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
+	public final void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
 		
 //		makes sure the command wants a new bootstrap
 		if (!consoleActionEvent.getCommand().getArg(0).equalsIgnoreCase("[request]")) return;

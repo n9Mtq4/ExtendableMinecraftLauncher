@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by will on 7/28/15 at 11:22 AM.
  */
-public class FModsTableModel extends DefaultTableModel implements TableModelListener, TableColumnModelListener, ComponentListener {
+public final class FModsTableModel extends DefaultTableModel implements TableModelListener, TableColumnModelListener, ComponentListener {
 	
 	private static final int ENABLED_COLUMN_WIDTH = 60;
 	
@@ -42,16 +42,16 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	}
 	
 	@Override
-	public boolean isCellEditable(int row, int column) {
+	public final boolean isCellEditable(int row, int column) {
 		return column == 0;
 	}
 	
 	@Override
-	public Class<?> getColumnClass(int columnIndex) {
+	public final Class<?> getColumnClass(int columnIndex) {
 		return columnIndex == 0 ? Boolean.class : super.getColumnClass(columnIndex);
 	}
 	
-	public void refresh() {
+	public final void refresh() {
 		
 //		TODO: dirty fix that doesn't allow remembering selected profile
 //		solve the issue that is creating the problem.
@@ -101,7 +101,7 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	}
 	
 	@Override
-	public void tableChanged(TableModelEvent e) {
+	public final void tableChanged(TableModelEvent e) {
 		
 //		TODO: debug print
 		System.out.println("Forge Mod Table Changed");
@@ -110,47 +110,47 @@ public class FModsTableModel extends DefaultTableModel implements TableModelList
 	}
 	
 	@Override
-	public void columnAdded(TableColumnModelEvent e) {
+	public final void columnAdded(TableColumnModelEvent e) {
 		
 	}
 	
 	@Override
-	public void columnRemoved(TableColumnModelEvent e) {
+	public final void columnRemoved(TableColumnModelEvent e) {
 		
 	}
 	
 	@Override
-	public void columnMoved(TableColumnModelEvent e) {
+	public final void columnMoved(TableColumnModelEvent e) {
 		
 	}
 	
 	@Override
-	public void columnMarginChanged(ChangeEvent e) {
+	public final void columnMarginChanged(ChangeEvent e) {
 		resizeColumns();
 	}
 	
 	@Override
-	public void columnSelectionChanged(ListSelectionEvent e) {
+	public final void columnSelectionChanged(ListSelectionEvent e) {
 		
 	}
 	
 	@Override
-	public void componentResized(ComponentEvent e) {
+	public final void componentResized(ComponentEvent e) {
 		resizeColumns();
 	}
 	
 	@Override
-	public void componentMoved(ComponentEvent e) {
+	public final void componentMoved(ComponentEvent e) {
 		
 	}
 	
 	@Override
-	public void componentShown(ComponentEvent e) {
+	public final void componentShown(ComponentEvent e) {
 		
 	}
 	
 	@Override
-	public void componentHidden(ComponentEvent e) {
+	public final void componentHidden(ComponentEvent e) {
 		
 	}
 }

@@ -9,11 +9,11 @@ import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 /**
  * Created by will on 7/27/15 at 6:40 PM.
  */
-public class InitSettingsTab implements ObjectListener {
+public final class InitSettingsTab implements ObjectListener {
 	
 	@Async
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			

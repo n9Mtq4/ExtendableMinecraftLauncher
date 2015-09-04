@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
  * This hooks into the game start event.
  * When the game starts, we run the ForgeModManager class.
  * */
-public class GameStartHook implements ObjectListener {
+public final class GameStartHook implements ObjectListener {
 	
 	private final Launcher launcher;
 	private ModData modData;
@@ -26,7 +26,7 @@ public class GameStartHook implements ObjectListener {
 	}
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("gamelaunch")) return;
 		if (!(e.getObject() instanceof ActionEvent)) return;

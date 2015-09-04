@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * Created by will on 9/2/15 at 11:20 PM.
  */
-public class WorldTable extends JTable {
+public final class WorldTable extends JTable {
 	
 	private final WorldTableModel model;
 	

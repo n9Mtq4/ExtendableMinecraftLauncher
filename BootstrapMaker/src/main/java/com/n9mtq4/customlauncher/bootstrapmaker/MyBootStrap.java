@@ -23,7 +23,7 @@ import static com.n9mtq4.logwindow.utils.ReflectionHelper.getObject;
  * and pushes it to the BaseConsole so we can access it from the
  * plugins.
  */
-public class MyBootStrap extends Bootstrap {
+public final class MyBootStrap extends Bootstrap {
 	
 	private static final int EMULATED_BOOTSTRAP_VERSION = 30;
 	
@@ -36,7 +36,7 @@ public class MyBootStrap extends Bootstrap {
 	}
 	
 	@Override
-	public void startLauncher(File launcherJar) {
+	public final void startLauncher(File launcherJar) {
 		
 		println("Starting launcher.");
 		println("Modded Minecraft Launcher by n9Mtq4. http://n9mtq4.com/?page=projects#minecraftlauncher");

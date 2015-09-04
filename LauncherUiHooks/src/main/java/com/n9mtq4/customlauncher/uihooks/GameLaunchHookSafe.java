@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 /**
  * Created by will on 7/27/15 at 5:57 PM.
  */
-public class GameLaunchHookSafe implements ObjectListener {
+public final class GameLaunchHookSafe implements ObjectListener {
 	
 	@Override
-	public void objectReceived(final SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(final SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
 		if (!(e.getObject() instanceof JButton)) return;

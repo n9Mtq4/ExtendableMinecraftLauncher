@@ -1,4 +1,4 @@
-package com.n9mtq4.customlauncher.uihooks;
+package com.n9mtq4.customlauncher.uihooks.override;
 
 import com.mojang.launcher.events.GameOutputLogProcessor;
 import com.mojang.launcher.updater.DownloadProgress;
@@ -36,55 +36,55 @@ public class HookedSwingUserInterface extends SwingUserInterface {
 	@Override
 	public void showLoginPrompt(Launcher minecraftLauncher, LogInPopup.Callback callback) {
 		super.showLoginPrompt(minecraftLauncher, callback);
-		baseConsole.pushObject(new Object[]{minecraftLauncher, callback}, "swinguserinterface showLoginPrompt");
+		baseConsole.pushObject(new Object[]{this, minecraftLauncher, callback}, "swinguserinterface showLoginPrompt");
 	}
 	
 	@Override
 	public void initializeFrame() {
 		super.initializeFrame();
-		baseConsole.pushObject(null, "swinguserinterface initializeFrame");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface initializeFrame");
 	}
 	
 	@Override
 	public void showOutdatedNotice() {
 		super.showOutdatedNotice();
-		baseConsole.pushObject(null, "swinguserinterface showOutdatedNotice");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface showOutdatedNotice");
 	}
 	
 	@Override
 	public void showLoginPrompt() {
 		super.showLoginPrompt();
-		baseConsole.pushObject(null, "swinguserinterface showLoginPrompt");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface showLoginPrompt");
 	}
 	
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		baseConsole.pushObject(visible, "swinguserinterface setVisible");
+		baseConsole.pushObject(new Object[] {this, visible}, "swinguserinterface setVisible");
 	}
 	
 	@Override
 	public void shutdownLauncher() {
 		super.shutdownLauncher();
-		baseConsole.pushObject(null, "swinguserinterface shutdownLauncher");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface shutdownLauncher");
 	}
 	
 	@Override
 	public void setDownloadProgress(DownloadProgress downloadProgress) {
 		super.setDownloadProgress(downloadProgress);
-		baseConsole.pushObject(downloadProgress, "swinguserinterface setDownloadProgress");
+		baseConsole.pushObject(new Object[] {this, downloadProgress}, "swinguserinterface setDownloadProgress");
 	}
 	
 	@Override
 	public void hideDownloadProgress() {
 		super.hideDownloadProgress();
-		baseConsole.pushObject(null, "swinguserinterface hideDownloadProgress");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface hideDownloadProgress");
 	}
 	
 	@Override
 	public void showCrashReport(CompleteVersion version, File crashReportFile, String crashReport) {
 		super.showCrashReport(version, crashReportFile, crashReport);
-		baseConsole.pushObject(new Object[]{version, crashReportFile, crashReport}, "swinguserinterface showCrashReport");
+		baseConsole.pushObject(new Object[]{this, version, crashReportFile, crashReport}, "swinguserinterface showCrashReport");
 	}
 	
 	@Override
@@ -96,27 +96,27 @@ public class HookedSwingUserInterface extends SwingUserInterface {
 	@Override
 	public void updatePlayState() {
 		super.updatePlayState();
-		baseConsole.pushObject(null, "swinguserinterface updatePlayState");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface updatePlayState");
 	}
 	
 	@Override
 	public GameOutputLogProcessor showGameOutputTab(MinecraftGameRunner gameRunner) {
 		GameOutputLogProcessor gameOutputLogProcessor = super.showGameOutputTab(gameRunner);
-		baseConsole.pushObject(gameRunner, "swinguserinterface showGameOutputTab");
+		baseConsole.pushObject(new Object[] {this, gameRunner}, "swinguserinterface showGameOutputTab");
 		return gameOutputLogProcessor;
 	}
 	
 	@Override
 	public String getTitle() {
 		String title = super.getTitle();
-		baseConsole.pushObject(null, "swinguserinterface getTitle");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface getTitle");
 		return title;
 	}
 	
 	@Override
 	public JFrame getFrame() {
 		JFrame frame =  super.getFrame();
-		baseConsole.pushObject(null, "swinguserinterface getFrame");
+		baseConsole.pushObject(new Object[] {this}, "swinguserinterface getFrame");
 		return frame;
 	}
 	

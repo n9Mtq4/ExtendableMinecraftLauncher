@@ -9,7 +9,7 @@ import javax.swing.*;
 /**
  * Created by will on 7/27/15 at 7:17 PM.
  */
-public class NTab extends JScrollPane {
+public final class NTab extends JScrollPane {
 	
 	
 	private WebsiteTab rootPanel;

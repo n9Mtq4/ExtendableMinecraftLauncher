@@ -14,11 +14,11 @@ import java.util.ArrayList;
 /**
  * Created by will on 7/28/15 at 2:18 PM.
  */
-public class SwingComponentHook implements ObjectListener {
+public final class SwingComponentHook implements ObjectListener {
 	
 	@Async
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("swinguserinterface")) return;
 		if (!(e.getObject() instanceof SwingUserInterface)) return;

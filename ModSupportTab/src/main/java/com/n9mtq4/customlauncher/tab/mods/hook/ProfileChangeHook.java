@@ -9,7 +9,7 @@ import net.minecraft.launcher.profile.RefreshedProfilesListener;
  * This needs to be its own class that stays unloaded UNTIL
  * the launcher.jar is added to the classpath.
  */
-public class ProfileChangeHook implements RefreshedProfilesListener {
+public final class ProfileChangeHook implements RefreshedProfilesListener {
 	
 	private ModTab modTab;
 	
@@ -18,7 +18,7 @@ public class ProfileChangeHook implements RefreshedProfilesListener {
 	}
 	
 	@Override
-	public void onProfilesRefreshed(ProfileManager profileManager) {
+	public final void onProfilesRefreshed(ProfileManager profileManager) {
 		modTab.onProfilesRefreshed(profileManager);
 	}
 	

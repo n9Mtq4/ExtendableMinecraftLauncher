@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * Created by will on 7/28/15 at 11:01 AM.
  */
-public class ModEntry implements Serializable {
+public final class ModEntry implements Serializable {
 	
 	private static final long serialVersionUID = 6987202382657879507L;
 	

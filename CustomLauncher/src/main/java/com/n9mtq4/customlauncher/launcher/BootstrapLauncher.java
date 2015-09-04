@@ -9,17 +9,17 @@ import java.io.File;
 /**
  * Created by will on 7/27/15 at 12:48 PM.
  */
-public class BootstrapLauncher {
+public final class BootstrapLauncher {
 	
 	/**
 	 * Pass the launch args into minecraft
 	 * */
-	private String[] args;
+	private final String[] args;
 	
 	/**
 	 * The internal server that handles communication
 	 * */
-	private BaseConsole baseConsole;
+	private final BaseConsole baseConsole;
 	
 	public BootstrapLauncher(String[] args) {
 		

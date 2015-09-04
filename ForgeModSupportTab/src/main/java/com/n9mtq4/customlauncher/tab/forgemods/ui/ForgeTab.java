@@ -21,7 +21,7 @@ import java.io.IOException;
  * Created by will on 7/28/15 at 10:22 PM.
  */
 @SuppressWarnings("FieldCanBeLocal")
-public class ForgeTab extends JSplitPane implements ListSelectionListener {
+public final class ForgeTab extends JSplitPane implements ListSelectionListener {
 	
 	private final LauncherTabPanel parent;
 	private ModData modData;
@@ -186,7 +186,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 	}
 	
 	@Override
-	public void valueChanged(ListSelectionEvent e) {
+	public final void valueChanged(ListSelectionEvent e) {
 		
 		modData.selectedProfile = list.getSelectedIndex();
 		table.refreshModel();
@@ -201,7 +201,7 @@ public class ForgeTab extends JSplitPane implements ListSelectionListener {
 		
 	}
 	
-	public void refresh() {
+	public final void refresh() {
 		
 		refreshList();
 		table.refreshModel();
