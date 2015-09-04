@@ -188,6 +188,8 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 	@Override
 	public final void valueChanged(ListSelectionEvent e) {
 		
+//		System.out.println("Value change");
+		if (list.getSelectedIndex() == -1) return;
 		modData.selectedProfile = list.getSelectedIndex();
 		table.refreshModel();
 		
@@ -197,7 +199,9 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 		
 		//noinspection unchecked
 		list.setListData(modData.getProfilesNames());
+//		int selectedIndex = modData.selectedProfile == -1 ? 0 : modData.selectedProfile;
 		list.setSelectedIndex(modData.selectedProfile);
+		table.fireModDataSync();
 		
 	}
 	

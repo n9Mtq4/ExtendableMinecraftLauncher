@@ -55,8 +55,9 @@ public final class FModsTableModel extends DefaultTableModel implements TableMod
 		
 //		TODO: dirty fix that doesn't allow remembering selected profile
 //		solve the issue that is creating the problem.
-		if (modData.selectedProfile == -1) modData.selectedProfile = 0;
-		ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
+		int selectedProfileIndex = modData.selectedProfile == -1 ? 0 : modData.selectedProfile;
+//		if (modData.selectedProfile == -1) modData.selectedProfile = 0;
+		ModProfile selectedProfile = modData.profiles.get(selectedProfileIndex);
 		Object[][] t = new Object[selectedProfile.getModList().size()][2];
 		
 		for (int i = 0; i < selectedProfile.getModList().size(); i++) {
@@ -81,6 +82,11 @@ public final class FModsTableModel extends DefaultTableModel implements TableMod
 	
 	protected void fireModDataSync() {
 		
+		if (modData.selectedProfile == -1) {
+			System.out.println("Selected Profile is -1, so canceling mod data save");
+			return;
+		}
+		System.out.println("Saving the forge ModData");
 		ModProfile selectedProfile = modData.profiles.get(modData.selectedProfile);
 		selectedProfile.setModList(new ArrayList<ModEntry>());
 		

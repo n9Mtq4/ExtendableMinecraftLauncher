@@ -34,6 +34,10 @@ public final class FModsTable extends JTable {
 		
 	}
 	
+	protected void fireModDataSync() {
+		model.fireModDataSync();
+	}
+	
 	private void initFileDrop() {
 		
 		new FileDrop(this, new FileDrop.Listener() {
