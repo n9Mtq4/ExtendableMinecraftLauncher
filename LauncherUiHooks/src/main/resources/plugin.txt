@@ -1,5 +1,4 @@
 com.n9mtq4.customlauncher.uihooks.BottomBarPanelHook
-com.n9mtq4.customlauncher.uihooks.ConsoleTabHook
 com.n9mtq4.customlauncher.uihooks.LauncherPanelHook
 com.n9mtq4.customlauncher.uihooks.PlayButtonHook
 com.n9mtq4.customlauncher.uihooks.PlayButtonPanelHook

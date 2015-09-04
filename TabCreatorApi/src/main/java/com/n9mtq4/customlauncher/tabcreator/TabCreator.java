@@ -32,6 +32,7 @@ public class TabCreator implements ObjectListener {
 		if (!(objs[1] instanceof Component)) return;
 		
 		((LauncherTabPanel) tabPanel).addTab((String) objs[0], (Component) objs[1]);
+		baseConsole.println("Added tab name: " + objs[0] + ", an instance of " + objs[1].getClass().getName());
 		
 	}
 	

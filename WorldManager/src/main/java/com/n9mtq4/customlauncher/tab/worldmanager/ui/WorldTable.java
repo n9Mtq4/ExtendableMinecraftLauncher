@@ -9,7 +9,7 @@ import javax.swing.*;
  */
 public class WorldTable extends JTable {
 	
-	private WorldTableModel model;
+	private final WorldTableModel model;
 	
 	public WorldTable(Launcher launcher) {
 		super();
