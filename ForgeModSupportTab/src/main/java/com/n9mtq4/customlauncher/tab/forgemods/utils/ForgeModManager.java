@@ -34,7 +34,7 @@ public class ForgeModManager {
 					System.out.println("Copyed: " + mod.getFile().getAbsolutePath());
 				}catch (IOException e) {
 					e.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Error setting up mod " + mod.getName() + "!", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Error setting up mod " + mod.getName() + "!\nDid you move/delete it?", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			
