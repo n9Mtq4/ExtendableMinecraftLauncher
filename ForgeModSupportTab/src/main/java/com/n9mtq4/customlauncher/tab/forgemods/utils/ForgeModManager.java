@@ -65,28 +65,28 @@ public class ForgeModManager {
 		
 		com.mojang.launcher.Launcher launcher1 = launcher.getLauncher();
 		File workingDir = launcher1.getWorkingDirectory();
-		File hasRun = new File(workingDir, "mods/umcl.txt");
+		File hasRun = new File(workingDir, "mods/exmcl.txt");
 //		has been run before
 		if (hasRun.exists()) return;
 		
 		/*
-		* copy mods/*.jar into mods_umcl/*.jar
+		* copy mods/*.jar into mods_exmcl/*.jar
 		* delete mods/*.jar
-		* make file mods/umcl.txt
-		* move all jars in mods_umcl/ into default profile
+		* make file mods/exmcl.txt
+		* move all jars in mods_exmcl/ into default profile
 		* */
 		
 		File modsDir = new File(workingDir, "mods/");
-		File umclModsDir = new File(workingDir, "mods_umcl/");
-		File umclRan = new File(workingDir, "mods/umcl.txt");
+		File exmclModsDir = new File(workingDir, "mods_exmcl/");
+		File exmclRan = new File(workingDir, "mods/exmcl.txt");
 		
 //		COPY MODS/*.JAR INTO MODS_UMCL/*.JAR
 		File[] filesInModsDir = modsDir.listFiles(); // get modsContents
 		if (filesInModsDir == null) {
 //			if null make the ran file and stop
 //			make text file
-			umclRan.getParentFile().mkdirs();
-			umclRan.createNewFile();
+			exmclRan.getParentFile().mkdirs();
+			exmclRan.createNewFile();
 			return;
 		}
 //		not null, copy children, and delete the original
@@ -94,7 +94,7 @@ public class ForgeModManager {
 			
 			try {
 				if (!file.isDirectory() && (file.getName().endsWith(".jar") || file.getName().endsWith(".zip"))) {
-					File newFile = new File(umclModsDir, file.getName());
+					File newFile = new File(exmclModsDir, file.getName());
 					copyFile(file, newFile);
 					file.delete();
 				}
@@ -106,8 +106,8 @@ public class ForgeModManager {
 		}
 		
 //		make the ran file
-		umclRan.getParentFile().mkdirs();
-		umclRan.createNewFile();
+		exmclRan.getParentFile().mkdirs();
+		exmclRan.createNewFile();
 		
 //		get the default profile, or add it if it doesn't exist
 		ModProfile defaultProfile = modData.getProfileByName("Default");
@@ -116,7 +116,7 @@ public class ForgeModManager {
 			modData.profiles.add(defaultProfile);
 		}
 		
-		File[] filesInUmclModsDir = umclModsDir.listFiles();
+		File[] filesInUmclModsDir = exmclModsDir.listFiles();
 		if (filesInUmclModsDir == null) return;
 		for (File file : filesInUmclModsDir) {
 			
