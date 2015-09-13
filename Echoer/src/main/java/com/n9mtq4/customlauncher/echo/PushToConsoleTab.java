@@ -8,8 +8,6 @@ import com.n9mtq4.logwindow.utils.Colour;
 import net.minecraft.launcher.ui.tabs.ConsoleTab;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
-import java.awt.*;
-
 /**
  * Created by will on 9/3/15 at 10:15 PM.
  */
@@ -34,14 +32,9 @@ public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	}
 	
 	@Override
-	public final void print(String s, Colour colour) {
+	public void print(Object o, Colour colour) {
 		if (consoleTab == null) return;
-		((ConsoleTab) consoleTab).print(s);
-	}
-	
-	@Override
-	public final void printImage(Image image) {
-//		nothing
+		((ConsoleTab) consoleTab).print(String.valueOf(o));
 	}
 	
 	@Override
@@ -52,7 +45,7 @@ public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 		String[] args = (String[]) e.getObject();
 		if (contains(args, "consoletabdebug")) {
 			this.baseConsole = baseConsole;
-			baseConsole.addGui(this);
+			baseConsole.addConsoleUi(this);
 		}
 		baseConsole.disableListenerAttribute(this);
 		

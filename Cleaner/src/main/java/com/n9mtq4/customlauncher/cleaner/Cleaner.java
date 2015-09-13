@@ -29,7 +29,9 @@ public final class Cleaner implements ObjectListener, StringListener, RemovalLis
 		if (!(e.getObject() instanceof File)) return;
 		
 //		toDelete.add((File) e.getObject());
-		addToDelete((File) e.getObject());
+		File file = (File) e.getObject();
+		baseConsole.println("Added " + file.getAbsolutePath() + " to be deleted");
+		addToDelete(file);
 		
 	}
 	

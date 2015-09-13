@@ -30,7 +30,7 @@ public final class BootstrapLauncher {
 		this.baseConsole = new BaseConsole();
 //		show log if in debugmode
 		if (contains(args, "DEBUGBUILD")) {
-			baseConsole.addGui(new GuiJFrameLite(baseConsole));
+			baseConsole.addConsoleUi(new GuiJFrameLite(baseConsole));
 //			show System.out.print in baseconsole
 //			baseConsole.redirectStdoutOn(true);
 			StdOutRedirection.addToBaseConsole(baseConsole, true);

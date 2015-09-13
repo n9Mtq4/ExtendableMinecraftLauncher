@@ -30,6 +30,8 @@ public final class SwingComponentHook implements ObjectListener {
 			e.getBaseConsole().pushObject(component, "allcomponents");
 		}
 		
+		baseConsole.disableListenerAttribute(this);
+		
 	}
 	
 	public static ArrayList<Component> getAllComponents(final Container c) {
