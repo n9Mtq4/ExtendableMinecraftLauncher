@@ -14,13 +14,13 @@ public final class WorldTableModel extends DefaultTableModel {
 	private static File worldDir;
 	
 	private Launcher launcher;
-	private ArrayList<String> worldNames;
+	private ArrayList<String> worldDirs;
 	
 	public WorldTableModel(Launcher launcher) {
 		this.launcher = launcher;
 		com.mojang.launcher.Launcher launcher1 = launcher.getLauncher();
 		worldDir = new File(launcher1.getWorkingDirectory(), "saves");
-		setWorlds();
+		updateWorldList();
 	}
 	
 	@Override
@@ -36,18 +36,18 @@ public final class WorldTableModel extends DefaultTableModel {
 	@Override
 	public final Object getValueAt(int row, int column) {
 		
-		return worldNames.get(row);
+		return worldDirs.get(row);
 		
 	}
 	
-	private void setWorlds() {
+	private void updateWorldList() {
 		
 		File[] worlds = worldDir.listFiles();
-		this.worldNames = new ArrayList<String>();
+		this.worldDirs = new ArrayList<String>();
 		for (File world : worlds) {
-			if (world.isDirectory()) worldNames.add(world.getName());
+			if (world.isDirectory()) worldDirs.add(world.getName());
 		}
-		setRowCount(worlds.length);
+		setRowCount(worlds.length - 1);
 		setColumnCount(1);
 		
 	}
