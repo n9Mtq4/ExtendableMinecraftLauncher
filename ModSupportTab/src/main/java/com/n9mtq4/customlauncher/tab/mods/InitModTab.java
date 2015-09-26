@@ -8,7 +8,7 @@ import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.profile.ProfileManager;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 
 /**
  * Created by will on 7/27/15 at 5:10 PM.
@@ -25,7 +25,7 @@ public final class InitModTab implements ObjectListener {
 				public void run() {
 					LauncherTabPanel tabPanel = (LauncherTabPanel) e.getObject();
 					ModTab modTab = new ModTab(tabPanel.getMinecraftLauncher());
-					baseConsole.pushObject(new Object[]{"Jar Mods", modTab}, "addtab");
+					baseConsole.push(new Object[]{"Jar Mods", modTab}, "addtab");
 //					have to use reflection because the launcher isn't loaded when the classloader tries to implement RefreshedProfilesListener
 //					reflection can keep the ProfileChangeHook unloaded until it is safe to load
 					ProfileManager pm = tabPanel.getMinecraftLauncher().getProfileManager();

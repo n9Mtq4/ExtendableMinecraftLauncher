@@ -25,7 +25,7 @@ public final class TabPanelHook implements ObjectListener {
 		LauncherPanel launcherPanel = (LauncherPanel) e.getObject();
 		LauncherTabPanel launcherTabPanel = ReflectionHelper.getObject("tabPanel", launcherPanel);
 		
-		baseConsole.pushObject(launcherTabPanel, "launchertabpanel");
+		baseConsole.push(launcherTabPanel, "launchertabpanel");
 		
 	}
 	

@@ -18,7 +18,7 @@ public final class InitNTab implements ObjectListener {
 		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			
 			NTab nTab = new NTab((LauncherTabPanel) e.getObject(), ((LauncherTabPanel) e.getObject()).getMinecraftLauncher());
-			baseConsole.pushObject(new Object[]{"NLauncher", nTab}, "addtab");
+			baseConsole.push(new Object[]{"NLauncher", nTab}, "addtab");
 			
 			baseConsole.disableListenerAttribute(this);
 			

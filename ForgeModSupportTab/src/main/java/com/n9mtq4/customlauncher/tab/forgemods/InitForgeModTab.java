@@ -8,7 +8,7 @@ import com.n9mtq4.logwindow.listener.EnableListener;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 import java.io.File;
 
 /**
@@ -20,19 +20,19 @@ public final class InitForgeModTab implements EnableListener, ObjectListener {
 	
 	@Override
 	public void onEnable(EnableActionEvent enableActionEvent) {
-		enableActionEvent.getBaseConsole().pushObject(new File("tmp/"), "add to delete");
+		enableActionEvent.getBaseConsole().push(new File("tmp/"), "add to delete");
 	}
 	
 	@Override
 	public final void objectReceived(final SentObjectEvent e, final BaseConsole baseConsole) {
 		
-		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
+		if (e.getMessage().equals("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
 					ForgeTab forgeTab = new ForgeTab((LauncherTabPanel) e.getObject(), baseConsole);
-					baseConsole.pushObject(new Object[]{"Forge Mods", forgeTab}, "addtab");
+					baseConsole.push(new Object[]{"Forge Mods", forgeTab}, "addtab");
 				}
 			});
 			

@@ -1,16 +1,20 @@
 package com.n9mtq4.customlauncher.tab.forgemods.ui;
 
 import com.n9mtq4.customlauncher.tab.forgemods.html.Downloader;
-import com.n9mtq4.logwindow.command.ConsoleCommand;
 import com.n9mtq4.logwindow.utils.JarLoader;
+import com.n9mtq4.logwindow.utils.StringParser;
 import net.minecraftforge.installer.SimpleInstaller;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -138,7 +142,7 @@ public final class InstallForgeDialog {
 			String link = adLink.substring(URL_PREFIX.length());
 			
 //			using LogWindow's parsing for more advanced things
-			ConsoleCommand parser = new ConsoleCommand(link);
+			StringParser parser = new StringParser(link);
 			String chop = parser.getBetween("/maven/net/minecraftforge/forge/", "-installer.jar");
 			chop = chop.split("/")[0];
 			String[] tokens = chop.split("-");

@@ -7,7 +7,7 @@ import net.minecraft.launcher.SwingUserInterface;
 import net.minecraft.launcher.game.GameLaunchDispatcher;
 import net.minecraft.launcher.profile.Profile;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.IOException;
 

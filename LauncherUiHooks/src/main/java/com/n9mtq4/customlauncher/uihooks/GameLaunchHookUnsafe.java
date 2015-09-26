@@ -6,7 +6,7 @@ import com.n9mtq4.logwindow.events.SentObjectEvent;
 import com.n9mtq4.logwindow.listener.AdditionListener;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -68,7 +68,7 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 	public final void actionPerformed(ActionEvent e) {
 		
 //		send the event to people listening with the BaseConsole first.
-		baseConsole.pushObject(e, "gamelaunch");
+		baseConsole.push(e, "gamelaunch");
 		
 		if (sentObjectEvent == null) {
 			baseConsole.println("ERROR. SOMETHING HAPPENED WITH RECAPTURING THE SENTOBJECTEVENT.\n" +

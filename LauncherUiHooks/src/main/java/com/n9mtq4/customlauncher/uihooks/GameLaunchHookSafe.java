@@ -4,7 +4,7 @@ import com.n9mtq4.logwindow.BaseConsole;
 import com.n9mtq4.logwindow.events.SentObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,7 +24,7 @@ public final class GameLaunchHookSafe implements ObjectListener {
 		playButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e1) {
-				e.getBaseConsole().pushObject(e1, "gamelaunch");
+				e.getBaseConsole().push(e1, "gamelaunch");
 			}
 		});
 		

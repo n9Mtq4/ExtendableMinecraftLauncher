@@ -21,7 +21,7 @@ public final class LauncherPanelHook implements ObjectListener {
 		SwingUserInterface ui = (SwingUserInterface) e.getObject();
 		LauncherPanel launcherPanel = ReflectionHelper.getObject("launcherPanel", ui);
 		
-		e.getBaseConsole().pushObject(launcherPanel, "launcherpanel");
+		e.getBaseConsole().push(launcherPanel, "launcherpanel");
 		
 	}
 	

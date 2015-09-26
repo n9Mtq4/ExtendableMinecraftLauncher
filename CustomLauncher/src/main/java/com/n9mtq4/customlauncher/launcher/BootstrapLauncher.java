@@ -55,8 +55,8 @@ public final class BootstrapLauncher {
 			s += " " + s1;
 		}
 		baseConsole.push(s);*/
-		baseConsole.pushObject(args, "args");
-		baseConsole.push("[request] newbootstrap");
+		baseConsole.push(args, "args");
+		baseConsole.pushString("[request] newbootstrap");
 		
 	}
 	

@@ -1,13 +1,10 @@
 package com.n9mtq4.customlauncher.cleaner;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.annotation.Async;
-import com.n9mtq4.logwindow.events.ConsoleActionEvent;
 import com.n9mtq4.logwindow.events.RemovalActionEvent;
 import com.n9mtq4.logwindow.events.SentObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.logwindow.listener.RemovalListener;
-import com.n9mtq4.logwindow.listener.StringListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ import java.util.List;
  * Created by will on 7/30/15 at 1:15 PM.<br>
  * This listener cleans up the ExMCL folder
  */
-public final class Cleaner implements ObjectListener, StringListener, RemovalListener {
+public final class Cleaner implements ObjectListener, RemovalListener {
 	
 	private final List<File> toDelete = new ArrayList<File>();
 	
@@ -32,16 +29,6 @@ public final class Cleaner implements ObjectListener, StringListener, RemovalLis
 		File file = (File) e.getObject();
 		baseConsole.println("Added " + file.getAbsolutePath() + " to be deleted");
 		addToDelete(file);
-		
-	}
-	
-	@Async
-	@Override
-	public final void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
-		
-		if (consoleActionEvent.getCommand().getArg(0).equalsIgnoreCase("cleanup")) {
-			clean(baseConsole);
-		}
 		
 	}
 	

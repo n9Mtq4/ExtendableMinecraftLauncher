@@ -1,7 +1,11 @@
 package com.n9mtq4.customlauncher.launcher;
 
-import javax.swing.*;
-import java.io.*;
+import javax.swing.JOptionPane;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Created by will on 7/27/15 at 12:34 PM.
@@ -56,7 +60,7 @@ public class CustomMinecraftLauncher {
 			
 //			https://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar
 			JOptionPane.showMessageDialog(null, "There is no Minecraft Launcher. Please download the launcher Jar file from minecraft.net under\n" +
-					"\"Download it here\" > \"Show all platforms\" > \"Minecraft for Linux / Other\"",
+							"\"Download it here\" > \"Show all platforms\" > \"Minecraft for Linux / Other\"",
 					"Error", JOptionPane.ERROR_MESSAGE);
 			
 			System.exit(1);

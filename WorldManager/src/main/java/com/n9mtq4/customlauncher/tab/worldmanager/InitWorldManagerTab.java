@@ -6,7 +6,7 @@ import com.n9mtq4.logwindow.events.SentObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 
 /**
  * Created by will on 8/31/15 at 11:39 PM.
@@ -22,7 +22,7 @@ public final class InitWorldManagerTab implements ObjectListener {
 				@Override
 				public void run() {
 					WorldManagerTab worldManagerTab = new WorldManagerTab((LauncherTabPanel) e.getObject(), baseConsole);
-					baseConsole.pushObject(new Object[]{"Worlds", worldManagerTab}, "addtab");
+					baseConsole.push(new Object[]{"Worlds", worldManagerTab}, "addtab");
 				}
 			});
 			

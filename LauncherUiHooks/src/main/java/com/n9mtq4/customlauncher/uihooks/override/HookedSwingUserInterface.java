@@ -11,7 +11,7 @@ import net.minecraft.launcher.SwingUserInterface;
 import net.minecraft.launcher.game.MinecraftGameRunner;
 import net.minecraft.launcher.ui.popups.login.LogInPopup;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 import java.io.File;
 
 /**
@@ -36,87 +36,87 @@ public class HookedSwingUserInterface extends SwingUserInterface {
 	@Override
 	public void showLoginPrompt(Launcher minecraftLauncher, LogInPopup.Callback callback) {
 		super.showLoginPrompt(minecraftLauncher, callback);
-		baseConsole.pushObject(new Object[]{this, minecraftLauncher, callback}, "swinguserinterface showLoginPrompt");
+		baseConsole.push(new Object[]{this, minecraftLauncher, callback}, "swinguserinterface showLoginPrompt");
 	}
 	
 	@Override
 	public void initializeFrame() {
 		super.initializeFrame();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface initializeFrame");
+		baseConsole.push(new Object[] {this}, "swinguserinterface initializeFrame");
 	}
 	
 	@Override
 	public void showOutdatedNotice() {
 		super.showOutdatedNotice();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface showOutdatedNotice");
+		baseConsole.push(new Object[] {this}, "swinguserinterface showOutdatedNotice");
 	}
 	
 	@Override
 	public void showLoginPrompt() {
 		super.showLoginPrompt();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface showLoginPrompt");
+		baseConsole.push(new Object[] {this}, "swinguserinterface showLoginPrompt");
 	}
 	
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
-		baseConsole.pushObject(new Object[] {this, visible}, "swinguserinterface setVisible");
+		baseConsole.push(new Object[] {this, visible}, "swinguserinterface setVisible");
 	}
 	
 	@Override
 	public void shutdownLauncher() {
 		super.shutdownLauncher();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface shutdownLauncher");
+		baseConsole.push(new Object[] {this}, "swinguserinterface shutdownLauncher");
 	}
 	
 	@Override
 	public void setDownloadProgress(DownloadProgress downloadProgress) {
 		super.setDownloadProgress(downloadProgress);
-		baseConsole.pushObject(new Object[] {this, downloadProgress}, "swinguserinterface setDownloadProgress");
+		baseConsole.push(new Object[] {this, downloadProgress}, "swinguserinterface setDownloadProgress");
 	}
 	
 	@Override
 	public void hideDownloadProgress() {
 		super.hideDownloadProgress();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface hideDownloadProgress");
+		baseConsole.push(new Object[] {this}, "swinguserinterface hideDownloadProgress");
 	}
 	
 	@Override
 	public void showCrashReport(CompleteVersion version, File crashReportFile, String crashReport) {
 		super.showCrashReport(version, crashReportFile, crashReport);
-		baseConsole.pushObject(new Object[]{this, version, crashReportFile, crashReport}, "swinguserinterface showCrashReport");
+		baseConsole.push(new Object[]{this, version, crashReportFile, crashReport}, "swinguserinterface showCrashReport");
 	}
 	
 	@Override
 	public void gameLaunchFailure(String reason) {
 		super.gameLaunchFailure(reason);
-		baseConsole.pushObject(reason, "swinguserinterface gameLaunchFailure");
+		baseConsole.push(reason, "swinguserinterface gameLaunchFailure");
 	}
 	
 	@Override
 	public void updatePlayState() {
 		super.updatePlayState();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface updatePlayState");
+		baseConsole.push(new Object[] {this}, "swinguserinterface updatePlayState");
 	}
 	
 	@Override
 	public GameOutputLogProcessor showGameOutputTab(MinecraftGameRunner gameRunner) {
 		GameOutputLogProcessor gameOutputLogProcessor = super.showGameOutputTab(gameRunner);
-		baseConsole.pushObject(new Object[] {this, gameRunner}, "swinguserinterface showGameOutputTab");
+		baseConsole.push(new Object[] {this, gameRunner}, "swinguserinterface showGameOutputTab");
 		return gameOutputLogProcessor;
 	}
 	
 	@Override
 	public String getTitle() {
 		String title = super.getTitle();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface getTitle");
+		baseConsole.push(new Object[] {this}, "swinguserinterface getTitle");
 		return title;
 	}
 	
 	@Override
 	public JFrame getFrame() {
 		JFrame frame =  super.getFrame();
-		baseConsole.pushObject(new Object[] {this}, "swinguserinterface getFrame");
+		baseConsole.push(new Object[] {this}, "swinguserinterface getFrame");
 		return frame;
 	}
 	

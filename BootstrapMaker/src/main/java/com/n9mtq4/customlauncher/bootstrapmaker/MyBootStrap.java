@@ -6,7 +6,7 @@ import net.minecraft.bootstrap.Bootstrap;
 import net.minecraft.bootstrap.FatalBootstrapError;
 import net.minecraft.launcher.Launcher;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.net.PasswordAuthentication;
@@ -55,8 +55,8 @@ public final class MyBootStrap extends Bootstrap {
 //			launcher = ReflectionHelper.callConstructor(aClass, this, workDir, proxy, proxyAuth, remainderArgs, 30);
 //			BootstrapEvent.fireMinecraftLauncherCreated(launcher);
 //			send the launcher to the base console!
-			parent.pushObject(this, "jframe");
-			parent.pushObject(launcher, "minecraftlauncher");
+			parent.push(this, "jframe");
+			parent.push(launcher, "minecraftlauncher");
 		}catch (Exception e) {
 			throw new FatalBootstrapError("Unable to start: " + e);
 		}

@@ -45,7 +45,7 @@ public final class MinecraftUserInterfaceProxy implements EnhancedProxy.Enhanced
 	
 	@Override
 	public final Object invoke(Object o, Object o1, Method method, Object[] objects) throws Throwable {
-		baseConsole.pushObject(new Object[]{o, o1, method, objects}, method.getName() + " called");
+		baseConsole.push(new Object[]{o, o1, method, objects}, method.getName() + " called");
 		return EnhancedProxy.callChild(o, method, objects);
 //		return null;
 	}

@@ -22,7 +22,7 @@ public final class PlayButtonPanelHook implements ObjectListener {
 		
 		PlayButtonPanel playButtonPanel = ReflectionHelper.getObject("playButtonPanel", bottomBarPanel);
 		
-		e.getBaseConsole().pushObject(playButtonPanel, "playbuttonpanel");
+		e.getBaseConsole().push(playButtonPanel, "playbuttonpanel");
 		
 	}
 	

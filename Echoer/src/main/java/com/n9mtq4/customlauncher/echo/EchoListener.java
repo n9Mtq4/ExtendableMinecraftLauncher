@@ -1,13 +1,11 @@
 package com.n9mtq4.customlauncher.echo;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.ConsoleActionEvent;
 import com.n9mtq4.logwindow.events.EnableActionEvent;
 import com.n9mtq4.logwindow.events.SentObjectEvent;
 import com.n9mtq4.logwindow.listener.EnableListener;
 import com.n9mtq4.logwindow.listener.ListenerContainer;
 import com.n9mtq4.logwindow.listener.ObjectListener;
-import com.n9mtq4.logwindow.listener.StringListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ import java.util.Collection;
  * It takes any String or Object that is pushed to the
  * BaseConsole and prints it out so I can see it.
  */
-public final class EchoListener implements EnableListener, StringListener, ObjectListener {
+public final class EchoListener implements EnableListener, ObjectListener {
 	
 	/**
 	 * It is important that Echoer is the first listener, so use ReflectionHelper to 
@@ -37,15 +35,6 @@ public final class EchoListener implements EnableListener, StringListener, Objec
 //		re-adds it first
 		l.add(0, container);
 		e.getBaseConsole().println("Used hack to make Echoer the first listener");
-	}
-	
-	/**
-	 * Prints the string sent to the BaseConsole
-	 * */
-	@Override
-	public final void actionPerformed(ConsoleActionEvent consoleActionEvent, BaseConsole baseConsole) {
-		baseConsole.println(consoleActionEvent.getCommand().getText());
-		
 	}
 	
 	/**

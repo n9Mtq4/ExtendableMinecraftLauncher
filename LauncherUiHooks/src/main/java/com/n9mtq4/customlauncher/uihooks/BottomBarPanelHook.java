@@ -21,7 +21,7 @@ public final class BottomBarPanelHook implements ObjectListener {
 		LauncherPanel launcherPanel = (LauncherPanel) e.getObject();
 		BottomBarPanel bottomBarPanel = ReflectionHelper.getObject("bottomBar", launcherPanel);
 		
-		e.getBaseConsole().pushObject(bottomBarPanel, "bottombarpanel");
+		e.getBaseConsole().push(bottomBarPanel, "bottombarpanel");
 		
 	}
 	

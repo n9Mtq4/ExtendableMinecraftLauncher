@@ -37,7 +37,7 @@ public final class SwingUserInterfaceHook implements ObjectListener {
 			}
 		}
 		
-		e.getBaseConsole().pushObject(ui, "swinguserinterface");
+		e.getBaseConsole().push(ui, "swinguserinterface");
 		
 	}
 	

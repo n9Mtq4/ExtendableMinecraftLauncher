@@ -7,8 +7,9 @@ import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.SwingUserInterface;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import java.awt.Component;
+import java.awt.Container;
 import java.util.ArrayList;
 
 /**
@@ -23,11 +24,11 @@ public final class SwingComponentHook implements ObjectListener {
 		if (!e.getMessage().equalsIgnoreCase("swinguserinterface")) return;
 		if (!(e.getObject() instanceof SwingUserInterface)) return;
 		
-		JFrame frame = (JFrame) ReflectionHelper.getObject("frame", (SwingUserInterface) e.getObject());
+		JFrame frame = ReflectionHelper.getObject("frame", (SwingUserInterface) e.getObject());
 		
 		ArrayList<Component> components = getAllComponents(frame);
 		for (Component component : components) {
-			e.getBaseConsole().pushObject(component, "allcomponents");
+			e.getBaseConsole().push(component, "allcomponents");
 		}
 		
 		baseConsole.disableListenerAttribute(this);
