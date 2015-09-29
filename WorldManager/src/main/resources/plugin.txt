@@ -1,1 +1,1 @@
-com.n9mtq4.customlauncher.tab.worldmanager.InitWorldManagerTab
+com.n9mtq4.exmcl.tab.worldmanager.InitWorldManagerTab

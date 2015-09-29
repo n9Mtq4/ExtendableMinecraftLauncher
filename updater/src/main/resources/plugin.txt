@@ -1,1 +1,1 @@
-com.n9mtq4.customlauncher.update.UpdateListener
+com.n9mtq4.exmcl.update.UpdateListener

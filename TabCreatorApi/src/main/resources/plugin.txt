@@ -1,2 +1,2 @@
-com.n9mtq4.customlauncher.tabcreator.creators.LowLevelTabCreator
-com.n9mtq4.customlauncher.tabcreator.creators.TooManyTabs
+com.n9mtq4.exmcl.tabcreator.creators.LowLevelTabCreator
+com.n9mtq4.exmcl.tabcreator.creators.TooManyTabs

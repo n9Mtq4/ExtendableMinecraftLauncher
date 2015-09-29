@@ -1,2 +1,2 @@
-com.n9mtq4.customlauncher.echo.EchoListener
-com.n9mtq4.customlauncher.echo.PushToConsoleTab
+com.n9mtq4.exmcl.echo.EchoListener
+com.n9mtq4.exmcl.echo.PushToConsoleTab

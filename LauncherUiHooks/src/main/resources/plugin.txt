@@ -1,26 +1,26 @@
-com.n9mtq4.customlauncher.uihooks.BottomBarPanelHook
-com.n9mtq4.customlauncher.uihooks.LauncherPanelHook
-com.n9mtq4.customlauncher.uihooks.PlayButtonHook
-com.n9mtq4.customlauncher.uihooks.PlayButtonPanelHook
-com.n9mtq4.customlauncher.uihooks.SwingUserInterfaceHook
-com.n9mtq4.customlauncher.uihooks.TabPanelHook
+com.n9mtq4.exmcl.uihooks.BottomBarPanelHook
+com.n9mtq4.exmcl.uihooks.LauncherPanelHook
+com.n9mtq4.exmcl.uihooks.PlayButtonHook
+com.n9mtq4.exmcl.uihooks.PlayButtonPanelHook
+com.n9mtq4.exmcl.uihooks.SwingUserInterfaceHook
+com.n9mtq4.exmcl.uihooks.TabPanelHook
 
 # This listener tries to replace the SwingUserInterface
 # with a proxied one, although this can be dangerous and 
 # breaks some things.
-#com.n9mtq4.customlauncher.uihooks.MinecraftUserInterfaceProxy
+#com.n9mtq4.exmcl.uihooks.MinecraftUserInterfaceProxy
 
 # This is the unsafe game launch hook
 # It allows for us to capture the event first,
 # and if necessary stop mojang from receiving it
-com.n9mtq4.customlauncher.uihooks.GameLaunchHookUnsafe
+com.n9mtq4.exmcl.uihooks.GameLaunchHookUnsafe
 
 # This listener is the safe version.
 # It works, but the unsafe version works well.
 # It is NOT compatible with the unsafe version
-# com.n9mtq4.customlauncher.uihooks.GameLaunchHookSafe
+# com.n9mtq4.exmcl.uihooks.GameLaunchHookSafe
 
 # This listener pushes all swing objects it can get its hands on.
 # Enabled for now, but can be a lot to handle for other listeners and
 # the BaseConsole pushing everything to everywhere.
-com.n9mtq4.customlauncher.uihooks.SwingComponentHook
+com.n9mtq4.exmcl.uihooks.SwingComponentHook

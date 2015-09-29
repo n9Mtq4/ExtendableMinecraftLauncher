@@ -1,1 +1,1 @@
-#com.n9mtq4.customlauncher.tab.mods.InitModTab
+#com.n9mtq4.exmcl.tab.mods.InitModTab

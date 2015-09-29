@@ -1,1 +1,1 @@
-com.n9mtq4.customlauncher.tab.forgemods.InitForgeModTab
+com.n9mtq4.exmcl.tab.forgemods.InitForgeModTab
