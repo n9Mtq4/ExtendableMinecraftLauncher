@@ -20,7 +20,19 @@ public final class InitForgeModTab implements EnableListener, ObjectListener {
 	
 	@Override
 	public void onEnable(EnableActionEvent enableActionEvent) {
+		
+		// adds tmp/ to be deleted
 		enableActionEvent.getBaseConsole().push(new File("tmp/"), "add to delete");
+		
+		// adds forge's log junk to be deleted
+		File workingDir = new File(System.getProperty("user.dir"));
+		File[] children = workingDir.listFiles();
+		if (children == null) return;
+		for (File child : children) {
+			if (child.getName().contains("forge_") && child.getName().endsWith(".jar.log")) {
+				enableActionEvent.getBaseConsole().push(child, "add to delete");
+			}
+		}
 	}
 	
 	@Override

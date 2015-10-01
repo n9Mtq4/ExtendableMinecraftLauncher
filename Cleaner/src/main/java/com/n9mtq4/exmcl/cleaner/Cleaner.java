@@ -43,7 +43,7 @@ public final class Cleaner implements ObjectListener, RemovalListener {
 	private void addToDelete(File file) {
 		
 		if (file == null) return;
-		toDelete.add(file);
+		if (!toDelete.contains(file)) toDelete.add(file);
 		
 	}
 	

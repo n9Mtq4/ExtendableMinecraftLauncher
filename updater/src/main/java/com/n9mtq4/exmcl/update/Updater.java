@@ -26,6 +26,8 @@ public final class Updater {
 	
 	public Updater() {
 		
+//		new UpdateDownloader();
+		
 		if (needsUpdate()) {
 			showUpdateMessage();
 		}

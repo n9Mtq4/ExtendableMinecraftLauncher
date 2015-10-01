@@ -90,7 +90,17 @@ public final class InstallForgeDialog {
 //			adds the jar so we can access it
 			JarLoader.addFile(file);
 //			start the install main method
-			SimpleInstaller.main(new String[]{});
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						SimpleInstaller.main(new String[]{});
+					}catch (IOException e) {
+						e.printStackTrace();
+						JOptionPane.showMessageDialog(frame, "Error. Couldn't open the forge installer.", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}).start();
 			
 		}catch (IOException e) {
 			e.printStackTrace();
