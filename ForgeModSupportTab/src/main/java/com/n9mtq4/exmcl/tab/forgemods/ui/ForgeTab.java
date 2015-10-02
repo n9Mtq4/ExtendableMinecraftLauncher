@@ -75,6 +75,7 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 	
 	private void gui() {
 		
+		setEnabled(false);
 		this.buttonPanel = new JPanel(new GridLayout(5, 1));
 		//noinspection unchecked
 		this.list = new JList(modData.getProfilesNames());
@@ -86,15 +87,13 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 		buttons();
 		
 		this.sideSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		this.sideSplitPane.setTopComponent(listScroll);
-		this.sideSplitPane.setBottomComponent(buttonPanel);
-		this.sideSplitPane.setResizeWeight(.9d);
+		sideSplitPane.setTopComponent(listScroll);
+		sideSplitPane.setBottomComponent(buttonPanel);
+		sideSplitPane.setResizeWeight(1d);
+		sideSplitPane.setDividerLocation(1d);
+		sideSplitPane.setEnabled(false);
 		
 		this.tableScroll = new JScrollPane(table);
-		
-//		TODO: NOT YET DONE MESSAGE
-//		JLabel label = new JLabel("This mod tab is NOT finished. It will be soon.");
-//		this.tableScroll = new JScrollPane(label);
 		
 		this.setLeftComponent(sideSplitPane);
 		this.setRightComponent(tableScroll);
