@@ -1,5 +1,8 @@
 package com.n9mtq4.exmcl.tab.worldmanager;
 
+import com.n9mtq4.reflection.ReflectionWrapper;
+import nbteditor.CompoundNode;
+import nbteditor.Node;
 import org.jnbt.CompoundTag;
 import org.jnbt.NBTInputStream;
 import org.jnbt.NBTOutputStream;
@@ -10,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.TreeMap;
 
 /**
  * Created by will on 10/3/15 at 11:21 AM.
@@ -34,42 +38,28 @@ public class WorldManagerUtils {
 	public static void setTagAt(File file, String[] path, final Object newValue) throws IOException {
 		
 		NBTInputStream nbtInputStream = new NBTInputStream(new FileInputStream(file));
+		Node rootNode = Node.CreateNode(nbtInputStream.readTag());
 		
-		Tag rootTag = nbtInputStream.readTag();
-		if (path.length == 0) {
-			Tag tag = new Tag(rootTag.getName()) {
-				@Override
-				public Object getValue() {
-					return newValue;
-				}
-			};
-			nbtInputStream.close();
-			NBTOutputStream nbtOutputStream = new NBTOutputStream(new FileOutputStream(file));
-			nbtOutputStream.writeTag(tag);
-			nbtOutputStream.close();
+		CompoundNode cn = (CompoundNode) ((TreeMap) rootNode.getValue()).get(path[0]);
+		for (int i = 1; i < path.length - 1; i++) {
+			cn = (CompoundNode) ((TreeMap) cn.getValue()).get(path[i]);
 		}
+		Node node = cn.getValue().get(path[path.length - 1]);
 		
-		CompoundTag ct = (CompoundTag) rootTag;
-		for (int i = 0; i < path.length - 1; i++) {
-			ct = (CompoundTag) ct.getValue().get(path[i]);
-		}
-		ct.getValue().remove(path[path.length - 1]);
-		ct.getValue().put(path[path.length - 1], new Tag(path[path.length - 1]) {
-			@Override
-			public Object getValue() {
-				return newValue;
-			}
-		});
+		ReflectionWrapper wrapper = ReflectionWrapper.attachToObject(node);
+		wrapper.setField("value", newValue);
+		
 		nbtInputStream.close();
 		NBTOutputStream nbtOutputStream = new NBTOutputStream(new FileOutputStream(file));
-		nbtOutputStream.writeTag(rootTag);
+		nbtOutputStream.writeTag(rootNode.toTag());
+		nbtOutputStream.close();
 		
 	}
 	
 	public static <E extends Tag> E getTagAt(File file, String[] path) throws IOException {
 		
 		NBTInputStream nbtInputStream = new NBTInputStream(new FileInputStream(file));
-		if (path.length == 0) { //TODO: is this right?
+		if (path.length == 1) { //TODO: is this right?
 			Tag tag = nbtInputStream.readTag();
 			nbtInputStream.close();
 			return (E) tag;

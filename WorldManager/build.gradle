@@ -12,6 +12,7 @@ dependencies {
     compile files('../CustomMinecraftLauncher/libs/LogWindowFramework-5.jar')
     compile files('../CustomMinecraftLauncher/libs/ReflectionHelper.jar')
     compile files('../CustomMinecraftLauncher/libs/JNBT_1.4.jar')
+    compile files('../CustomMinecraftLauncher/libs/NBTEditor.jar')
     compile files('../CustomMinecraftLauncher/Minecraft.jar')
     compile files('../libs/launcher.jar')
 }

@@ -1,5 +1,6 @@
 package com.n9mtq4.exmcl.tab.worldmanager.ui;
 
+import com.n9mtq4.exmcl.tab.worldmanager.WorldManagerUtils;
 import com.n9mtq4.logwindow.BaseConsole;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
@@ -89,14 +90,14 @@ public final class WorldManagerTab extends JSplitPane {
 					e1.printStackTrace();
 				}
 				
-			/*}else if (buttonText.equalsIgnoreCase("rename")) {
+			}else if (buttonText.equalsIgnoreCase("rename")) {
 				String newName = JOptionPane.showInputDialog(table, "What should be the new World Name?", "Enter name");
 				try {
 					WorldManagerUtils.renameWorld(table.getSelectedWorld(), newName);
 				}catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				table.refresh();*/
+				table.refresh();
 			}else {
 				JOptionPane.showMessageDialog(table, "This feature is coming soon.", "Not yet ready", JOptionPane.INFORMATION_MESSAGE);
 			}
