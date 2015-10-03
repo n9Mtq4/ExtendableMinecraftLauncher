@@ -13,6 +13,7 @@ import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -30,6 +31,7 @@ public final class WorldManagerTab extends JSplitPane {
 	private JButton refresh;
 	private JButton openSaveFolder;
 	private JButton rename;
+	private JButton toggleCheats;
 	private JButton duplicate;
 	private JButton moreInfo;
 	
@@ -53,13 +55,17 @@ public final class WorldManagerTab extends JSplitPane {
 		buttonArea.add(refresh);
 		refresh.addActionListener(listener);
 		
-		this.openSaveFolder = new JButton("Open saves");
+		this.openSaveFolder = new JButton("Open Saves");
 		buttonArea.add(openSaveFolder);
 		openSaveFolder.addActionListener(listener);
 		
 		this.rename = new JButton("Rename");
 		buttonArea.add(rename);
 		rename.addActionListener(listener);
+		
+		this.toggleCheats = new JButton("Toggle Cheats");
+		buttonArea.add(toggleCheats);
+		toggleCheats.addActionListener(listener);
 		
 		this.duplicate = new JButton("Duplicate");
 		buttonArea.add(duplicate);
@@ -91,13 +97,25 @@ public final class WorldManagerTab extends JSplitPane {
 				}
 				
 			}else if (buttonText.equalsIgnoreCase("rename")) {
-				String newName = JOptionPane.showInputDialog(table, "What should be the new World Name?", "Enter name");
+				String newName = JOptionPane.showInputDialog(WorldManagerTab.this, "What should be the new World Name?", "Enter name");
 				try {
 					WorldManagerUtils.renameWorld(table.getSelectedWorld(), newName);
 				}catch (IOException e1) {
 					e1.printStackTrace();
 				}
 				table.refresh();
+			}else if (buttonText.equalsIgnoreCase("toggle cheats")) {
+				try {
+					
+					File levelDat = new File(table.getSelectedWorld(), "level.dat");
+					byte command = (Byte) WorldManagerUtils.getTagAt(levelDat, new String[]{"Data", "allowCommands"}).getValue();
+					WorldManagerUtils.setTagAt(new File(table.getSelectedWorld(), "level.dat"), new String[]{"Data", "allowCommands"}, (byte) (command == 0 ? 1 : 0));
+					
+				}catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}else if (buttonText.equalsIgnoreCase("more info")) {
+				new MoreInfoWindow(table.getSelectedWorld(), WorldManagerTab.this);
 			}else {
 				JOptionPane.showMessageDialog(table, "This feature is coming soon.", "Not yet ready", JOptionPane.INFORMATION_MESSAGE);
 			}

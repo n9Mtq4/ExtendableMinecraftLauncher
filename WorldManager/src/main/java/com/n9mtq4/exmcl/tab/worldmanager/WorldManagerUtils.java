@@ -59,7 +59,7 @@ public class WorldManagerUtils {
 	public static <E extends Tag> E getTagAt(File file, String[] path) throws IOException {
 		
 		NBTInputStream nbtInputStream = new NBTInputStream(new FileInputStream(file));
-		if (path.length == 1) { //TODO: is this right?
+		if (path.length == 0) { //TODO: is this right?
 			Tag tag = nbtInputStream.readTag();
 			nbtInputStream.close();
 			return (E) tag;
