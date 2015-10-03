@@ -44,12 +44,14 @@ public final class WorldManagerTab extends JSplitPane {
 	
 	private void gui() {
 		
+		setEnabled(false);
+		
 		table = new WorldTable(parent.getMinecraftLauncher());
 		scrollPane = new JScrollPane(table);
 		setRightComponent(scrollPane);
 		
 		ButtonListener listener = new ButtonListener();
-		this.buttonArea = new JPanel(new GridLayout(10, 1));
+		this.buttonArea = new JPanel(new GridLayout(15, 1));
 		
 		this.refresh = new JButton("Refresh");
 		buttonArea.add(refresh);
@@ -97,9 +99,15 @@ public final class WorldManagerTab extends JSplitPane {
 				}
 				
 			}else if (buttonText.equalsIgnoreCase("rename")) {
-				String newName = JOptionPane.showInputDialog(WorldManagerTab.this, "What should be the new World Name?", "Enter name");
+				File world = table.getSelectedWorld();
+				if (world == null) {
+					JOptionPane.showMessageDialog(WorldManagerTab.this, "You haven't selected a world", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				String newName = JOptionPane.showInputDialog(WorldManagerTab.this, "What should be the new World Name?");
+				if (newName == null) return;
 				try {
-					WorldManagerUtils.renameWorld(table.getSelectedWorld(), newName);
+					WorldManagerUtils.renameWorld(world, newName);
 				}catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -107,6 +115,11 @@ public final class WorldManagerTab extends JSplitPane {
 			}else if (buttonText.equalsIgnoreCase("toggle cheats")) {
 				try {
 					
+					File world = table.getSelectedWorld();
+					if (world == null) {
+						JOptionPane.showMessageDialog(WorldManagerTab.this, "You haven't selected a world", "Error", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
 					File levelDat = new File(table.getSelectedWorld(), "level.dat");
 					byte command = (Byte) WorldManagerUtils.getTagAt(levelDat, new String[]{"Data", "allowCommands"}).getValue();
 					WorldManagerUtils.setTagAt(new File(table.getSelectedWorld(), "level.dat"), new String[]{"Data", "allowCommands"}, (byte) (command == 0 ? 1 : 0));
@@ -115,7 +128,12 @@ public final class WorldManagerTab extends JSplitPane {
 					e1.printStackTrace();
 				}
 			}else if (buttonText.equalsIgnoreCase("more info")) {
-				new MoreInfoWindow(table.getSelectedWorld(), WorldManagerTab.this);
+				File world = table.getSelectedWorld();
+				if (world == null) {
+					JOptionPane.showMessageDialog(WorldManagerTab.this, "You haven't selected a world", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				new MoreInfoWindow(world, WorldManagerTab.this);
 			}else {
 				JOptionPane.showMessageDialog(table, "This feature is coming soon.", "Not yet ready", JOptionPane.INFORMATION_MESSAGE);
 			}

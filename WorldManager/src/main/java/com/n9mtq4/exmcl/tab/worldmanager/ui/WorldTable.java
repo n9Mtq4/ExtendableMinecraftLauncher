@@ -23,6 +23,7 @@ public final class WorldTable extends JTable {
 	}
 	
 	public final File getSelectedWorld() {
+		if (getSelectedColumn() == -1) return null;
 		return new File(model.getSavesDir(), (String) model.getValueAt(getSelectedRow(), 1));
 	}
 	
