@@ -92,8 +92,10 @@ public final class InstallForgeDialog {
 		Runtime re = Runtime.getRuntime();
 		try{
 			re.exec("java -jar " + file.getAbsolutePath());
-		} catch (IOException ioe){
-			ioe.printStackTrace();
+		} catch (IOException e){
+			e.printStackTrace();
+			forgeTab.getBaseConsole().printStackTrace(e);
+			JOptionPane.showMessageDialog(forgeTab, "Error launching forge installer", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 	}

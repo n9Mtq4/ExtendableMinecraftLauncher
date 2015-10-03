@@ -34,6 +34,8 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 	private final LauncherTabPanel parent;
 	private ModData modData;
 	
+	private BaseConsole baseConsole;
+	
 	private JList list;
 	private JScrollPane listScroll;
 	private JPanel buttonPanel;
@@ -55,6 +57,7 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 		
 		this.parent = parent;
 		this.modData = ModData.load(parent.getMinecraftLauncher());
+		this.baseConsole = baseConsole;
 		
 		gui();
 		refreshList();
@@ -217,6 +220,10 @@ public final class ForgeTab extends JSplitPane implements ListSelectionListener 
 		refreshList();
 		table.refreshModel();
 		
+	}
+	
+	public BaseConsole getBaseConsole() {
+		return baseConsole;
 	}
 	
 	private static class ForgeTabButtonActionListener implements ActionListener {
