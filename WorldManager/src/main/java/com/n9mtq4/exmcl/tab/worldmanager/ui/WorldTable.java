@@ -19,7 +19,7 @@ public final class WorldTable extends JTable {
 		setModel(model);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setFillsViewportHeight(true);
-		setDragEnabled(false);
+		getTableHeader().setReorderingAllowed(false);
 	}
 	
 	public final File getSelectedWorld() {
