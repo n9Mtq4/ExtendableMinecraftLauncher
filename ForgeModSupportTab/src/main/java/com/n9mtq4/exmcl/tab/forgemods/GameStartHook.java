@@ -4,7 +4,7 @@ import com.n9mtq4.exmcl.tab.forgemods.data.ModData;
 import com.n9mtq4.exmcl.tab.forgemods.data.ModProfile;
 import com.n9mtq4.exmcl.tab.forgemods.utils.ForgeModManager;
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.Launcher;
 
@@ -26,7 +26,7 @@ public final class GameStartHook implements ObjectListener {
 	}
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("gamelaunch")) return;
 		if (!(e.getObject() instanceof ActionEvent)) return;

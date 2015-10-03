@@ -2,8 +2,8 @@ package com.n9mtq4.exmcl.uihooks;
 
 import com.n9mtq4.exmcl.uihooks.override.HookedSwingUserInterface;
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.AdditionActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.AdditionEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.AdditionListener;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.EnhancedProxy;
@@ -26,12 +26,12 @@ public final class MinecraftUserInterfaceProxy implements EnhancedProxy.Enhanced
 	private BaseConsole baseConsole;
 	
 	@Override
-	public final void onAddition(AdditionActionEvent e) {
+	public final void onAddition(AdditionEvent e) {
 		this.baseConsole = e.getBaseConsole();
 	}
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("minecraftlauncher")) return;
 		if (!(e.getObject() instanceof Launcher)) return;

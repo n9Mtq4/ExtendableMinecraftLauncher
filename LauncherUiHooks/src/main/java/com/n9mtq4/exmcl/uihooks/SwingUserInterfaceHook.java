@@ -2,7 +2,7 @@ package com.n9mtq4.exmcl.uihooks;
 
 import com.n9mtq4.exmcl.uihooks.override.HookedSwingUserInterface;
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.Launcher;
@@ -16,7 +16,7 @@ public final class SwingUserInterfaceHook implements ObjectListener {
 	private static final boolean HOOK_INTERFACE = true;
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("minecraftlauncher")) return;
 		if (!(e.getObject() instanceof Launcher)) return;

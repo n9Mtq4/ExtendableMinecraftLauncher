@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.echo;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.logwindow.ui.ConsoleUI;
 import com.n9mtq4.logwindow.utils.Colour;
@@ -38,7 +38,7 @@ public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	}
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("args") || !(e.getObject() instanceof String[])) return;
 		
@@ -60,7 +60,7 @@ public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	
 	private class GetConsoleTab implements ObjectListener {
 		@Override
-		public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+		public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 			
 			if (!e.getMessage().equals("launchertabpanel") || !(e.getObject() instanceof LauncherTabPanel)) return;
 			

@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.bootstrapmaker;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.logwindow.utils.StringParser;
 
@@ -19,7 +19,7 @@ public final class BootstrapMakerListener implements ObjectListener {
 	 * Listens for when a new bootstrap is needed
 	 * */
 	@Override
-	public final void objectReceived(final SentObjectEvent sentObjectEvent, final BaseConsole baseConsole) {
+	public final void objectReceived(final ObjectEvent sentObjectEvent, final BaseConsole baseConsole) {
 		
 //		makes sure that text has been requested
 		if (!sentObjectEvent.isUserInputString()) return;

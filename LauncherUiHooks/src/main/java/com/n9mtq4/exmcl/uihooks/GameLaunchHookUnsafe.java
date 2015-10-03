@@ -1,8 +1,8 @@
 package com.n9mtq4.exmcl.uihooks;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.AdditionActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.AdditionEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.AdditionListener;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 
@@ -26,10 +26,10 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 	
 	private ActionListener[] listeners;
 	private BaseConsole baseConsole;
-	protected SentObjectEvent sentObjectEvent;
+	protected ObjectEvent sentObjectEvent;
 	
 	@Override
-	public void onAddition(AdditionActionEvent e) {
+	public void onAddition(AdditionEvent e) {
 		e.getBaseConsole().addListenerAttribute(new DefaultGameLaunchEventCapture(this));
 	}
 	
@@ -37,7 +37,7 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 	 * Gets the play button and adds the GameLaunchHook onto it.
 	 * */
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 //		makes sure it is the playbutton
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
@@ -87,7 +87,7 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 	}
 	
 	/**
-	 * This class captures the SentObjectEvent and gives it to the parent.
+	 * This class captures the ObjectEvent and gives it to the parent.
 	 * This is so we can test if a listener has canceled the game launch event
 	 * */
 	private final static class DefaultGameLaunchEventCapture implements ObjectListener {
@@ -100,7 +100,7 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 		}
 		
 		@Override
-		public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+		public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 			
 			if (!e.getMessage().equalsIgnoreCase("gamelaunch")) return;
 			if (!(e.getObject() instanceof ActionEvent)) return;

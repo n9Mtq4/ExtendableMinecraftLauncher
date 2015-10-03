@@ -1,8 +1,8 @@
 package com.n9mtq4.exmcl.gamerunner;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.EnableActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.EnableEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.EnableListener;
 import com.n9mtq4.logwindow.listener.ListenerContainer;
 import com.n9mtq4.logwindow.listener.ObjectListener;
@@ -20,7 +20,7 @@ public class GameLaunchListener implements EnableListener, ObjectListener {
 	private Launcher launcher;
 	
 	@Override
-	public void onEnable(EnableActionEvent e) {
+	public void onEnable(EnableEvent e) {
 //		gets the listeners
 		ArrayList<ListenerContainer> l = ReflectionHelper.getObject("listenerContainers", e.getBaseConsole());
 //		gets the listener container that is handling the methods for this listener
@@ -33,14 +33,14 @@ public class GameLaunchListener implements EnableListener, ObjectListener {
 	}
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		tryLauncherGet(e, baseConsole);
 		tryGameStart(e, baseConsole);
 		
 	}
 	
-	private void tryLauncherGet(SentObjectEvent e, BaseConsole baseConsole) {
+	private void tryLauncherGet(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("minecraftlauncher")) return;
 		if (!(e.getObject() instanceof Launcher)) return;
@@ -49,7 +49,7 @@ public class GameLaunchListener implements EnableListener, ObjectListener {
 		
 	}
 	
-	private void tryGameStart(SentObjectEvent e, BaseConsole baseConsole) {
+	private void tryGameStart(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("gamelaunch")) return;
 		if (!(e.getObject() instanceof ActionEvent)) return;

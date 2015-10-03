@@ -2,7 +2,7 @@ package com.n9mtq4.exmcl.tab.worldmanager;
 
 import com.n9mtq4.exmcl.tab.worldmanager.ui.WorldManagerTab;
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 public final class InitWorldManagerTab implements ObjectListener {
 	
 	@Override
-	public final void objectReceived(final SentObjectEvent e, final BaseConsole baseConsole) {
+	public final void objectReceived(final ObjectEvent e, final BaseConsole baseConsole) {
 		
 		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			

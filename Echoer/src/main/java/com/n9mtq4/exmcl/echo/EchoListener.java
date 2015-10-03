@@ -1,8 +1,8 @@
 package com.n9mtq4.exmcl.echo;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.EnableActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.EnableEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.EnableListener;
 import com.n9mtq4.logwindow.listener.ListenerContainer;
 import com.n9mtq4.logwindow.listener.ObjectListener;
@@ -25,7 +25,7 @@ public final class EchoListener implements EnableListener, ObjectListener {
 	 * accomplish that goal.
 	 * */
 	@Override
-	public final void onEnable(EnableActionEvent e) {
+	public final void onEnable(EnableEvent e) {
 //		gets the listeners
 		ArrayList<ListenerContainer> l = ReflectionHelper.getObject("listenerContainers", e.getBaseConsole());
 //		gets the listener container that is handling the methods for this listener
@@ -41,7 +41,7 @@ public final class EchoListener implements EnableListener, ObjectListener {
 	 * Prints the object sent to the BaseConsole
 	 * */
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (e.getObject() == null) {
 			e.getBaseConsole().println("Object: " + e.getMessage() + " | (null)");

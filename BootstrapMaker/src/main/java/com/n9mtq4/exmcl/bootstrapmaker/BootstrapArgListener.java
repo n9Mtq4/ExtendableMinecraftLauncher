@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.bootstrapmaker;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 
 /**
@@ -17,7 +17,7 @@ public final class BootstrapArgListener implements ObjectListener {
 	 * Receives args from BootstrapLauncher
 	 * */
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("args")) return;
 		if (!(e.getObject() instanceof String[])) return;

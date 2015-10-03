@@ -1,8 +1,8 @@
 package com.n9mtq4.exmcl.cleaner;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.RemovalActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
+import com.n9mtq4.logwindow.events.RemovalEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.logwindow.listener.RemovalListener;
 
@@ -20,7 +20,7 @@ public final class Cleaner implements ObjectListener, RemovalListener {
 	private final List<File> toDelete = new ArrayList<File>();
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("add to delete")) return;
 		if (!(e.getObject() instanceof File)) return;
@@ -34,7 +34,7 @@ public final class Cleaner implements ObjectListener, RemovalListener {
 	
 //	TODO: should this be Async?
 	@Override
-	public final void onRemoval(RemovalActionEvent e) {
+	public final void onRemoval(RemovalEvent e) {
 		
 		clean(e.getBaseConsole());
 		

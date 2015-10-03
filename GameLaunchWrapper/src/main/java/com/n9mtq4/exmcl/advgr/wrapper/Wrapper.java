@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.advgr.wrapper;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 
 /**
@@ -18,7 +18,7 @@ public class Wrapper implements ObjectListener {
 	}
 	
 	@Override
-	public void objectReceived(SentObjectEvent sentObjectEvent, BaseConsole baseConsole) {
+	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		
 		

@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.uihooks;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 
 import javax.swing.JButton;
@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 public final class GameLaunchHookSafe implements ObjectListener {
 	
 	@Override
-	public final void objectReceived(final SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(final ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
 		if (!(e.getObject() instanceof JButton)) return;

@@ -2,7 +2,7 @@ package com.n9mtq4.exmcl.launcher;
 
 import com.n9mtq4.logwindow.BaseConsole;
 import com.n9mtq4.logwindow.managers.StdOutRedirection;
-import com.n9mtq4.logwindow.ui.GuiJFrameLite;
+import com.n9mtq4.logwindow.ui.uis.GuiJFrameLightWeight;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ public final class BootstrapLauncher {
 		this.baseConsole = new BaseConsole();
 //		show log if in debugmode
 		if (contains(args, "DEBUGBUILD")) {
-			baseConsole.addConsoleUi(new GuiJFrameLite(baseConsole));
+			baseConsole.addConsoleUi(new GuiJFrameLightWeight(baseConsole));
 //			show System.out.print in baseconsole
 //			baseConsole.redirectStdoutOn(true);
 			StdOutRedirection.addToBaseConsole(baseConsole, true);

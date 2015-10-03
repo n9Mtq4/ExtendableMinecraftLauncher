@@ -2,7 +2,7 @@ package com.n9mtq4.exmcl.tab.settings;
 
 import com.n9mtq4.logwindow.BaseConsole;
 import com.n9mtq4.logwindow.annotation.Async;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
@@ -13,7 +13,7 @@ public final class InitSettingsTab implements ObjectListener {
 	
 	@Async
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			

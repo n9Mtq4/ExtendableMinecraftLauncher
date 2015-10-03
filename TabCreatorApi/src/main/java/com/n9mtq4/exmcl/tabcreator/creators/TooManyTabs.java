@@ -2,8 +2,8 @@ package com.n9mtq4.exmcl.tabcreator.creators;
 
 import com.n9mtq4.exmcl.tabcreator.ui.TabTab;
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.EnableActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.EnableEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.EnableListener;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
@@ -27,7 +27,7 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 //			baseConsole.pushObject(tabPanel, "tabsafe");
 	
 	@Override
-	public void onEnable(EnableActionEvent enableActionEvent) {
+	public void onEnable(EnableEvent enableEvent) {
 		
 		this.unaddedTabs = new ArrayList<Object[]>();
 		tabTab = new TabTab();
@@ -35,7 +35,7 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 	}
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (tabPanel == null) {
 			tryToGetTabPanel(e, baseConsole);
@@ -56,7 +56,7 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 		tabTab.addTab(title, tab);
 	}
 	
-	private void tryCreatingTab(SentObjectEvent e, BaseConsole baseConsole) {
+	private void tryCreatingTab(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("addtab")) return;
 		if (!(e.getObject() instanceof Object[])) return;
@@ -74,7 +74,7 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 		
 	}
 	
-	private void tryToGetTabPanel(SentObjectEvent e, BaseConsole baseConsole) {
+	private void tryToGetTabPanel(ObjectEvent e, BaseConsole baseConsole) {
 		if (!e.getMessage().equalsIgnoreCase("launchertabpanel")) return;
 		if (!(e.getObject() instanceof LauncherTabPanel)) return;
 		this.tabPanel = e.getObject();

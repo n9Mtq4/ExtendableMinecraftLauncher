@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.tabcreator.creators;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
 
@@ -17,7 +17,7 @@ public final class LowLevelTabCreator implements ObjectListener, TabCreator {
 	private Object tabPanel;
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (tabPanel == null) tryToGetTabPanel(e, baseConsole);
 		else tryCreatingTab(e, baseConsole);
@@ -29,7 +29,7 @@ public final class LowLevelTabCreator implements ObjectListener, TabCreator {
 		((LauncherTabPanel) tabPanel).addTab(title, tab);
 	}
 	
-	private void tryCreatingTab(SentObjectEvent e, BaseConsole baseConsole) {
+	private void tryCreatingTab(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase(COMMAND_NAME)) return;
 		if (!(e.getObject() instanceof Object[])) return;
@@ -43,7 +43,7 @@ public final class LowLevelTabCreator implements ObjectListener, TabCreator {
 		
 	}
 	
-	private void tryToGetTabPanel(SentObjectEvent e, BaseConsole baseConsole) {
+	private void tryToGetTabPanel(ObjectEvent e, BaseConsole baseConsole) {
 		if (!e.getMessage().equalsIgnoreCase("launchertabpanel")) return;
 		if (!(e.getObject() instanceof LauncherTabPanel)) return;
 		this.tabPanel = e.getObject();

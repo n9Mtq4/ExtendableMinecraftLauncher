@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.uihooks;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.ui.bottombar.PlayButtonPanel;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 public class PlayButtonHook implements ObjectListener {
 	
 	@Override
-	public void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("playbuttonpanel")) return;
 		if (!(e.getObject() instanceof PlayButtonPanel)) return;

@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.uihooks;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import com.n9mtq4.reflection.ReflectionHelper;
 import net.minecraft.launcher.ui.BottomBarPanel;
@@ -13,7 +13,7 @@ import net.minecraft.launcher.ui.bottombar.PlayButtonPanel;
 public final class PlayButtonPanelHook implements ObjectListener {
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("bottombarpanel")) return;
 		if (!(e.getObject() instanceof BottomBarPanel)) return;

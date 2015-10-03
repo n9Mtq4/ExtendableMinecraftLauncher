@@ -1,7 +1,7 @@
 package com.n9mtq4.exmcl.tab.mods.hook;
 
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.Launcher;
 import net.minecraft.launcher.profile.Profile;
@@ -19,7 +19,7 @@ import java.io.OutputStream;
 public final class LauncherOpenHook implements ObjectListener {
 	
 	@Override
-	public final void objectReceived(SentObjectEvent e, BaseConsole baseConsole) {
+	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("minecraftlauncher")) return;
 		if (!(e.getObject() instanceof Launcher)) return;

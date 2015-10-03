@@ -2,8 +2,8 @@ package com.n9mtq4.exmcl.tab.forgemods;
 
 import com.n9mtq4.exmcl.tab.forgemods.ui.ForgeTab;
 import com.n9mtq4.logwindow.BaseConsole;
-import com.n9mtq4.logwindow.events.EnableActionEvent;
-import com.n9mtq4.logwindow.events.SentObjectEvent;
+import com.n9mtq4.logwindow.events.EnableEvent;
+import com.n9mtq4.logwindow.events.ObjectEvent;
 import com.n9mtq4.logwindow.listener.EnableListener;
 import com.n9mtq4.logwindow.listener.ObjectListener;
 import net.minecraft.launcher.ui.tabs.LauncherTabPanel;
@@ -19,10 +19,10 @@ import java.io.File;
 public final class InitForgeModTab implements EnableListener, ObjectListener {
 	
 	@Override
-	public void onEnable(EnableActionEvent enableActionEvent) {
+	public void onEnable(EnableEvent enableEvent) {
 		
 		// adds tmp/ to be deleted
-		enableActionEvent.getBaseConsole().push(new File("tmp/"), "add to delete");
+		enableEvent.getBaseConsole().push(new File("tmp/"), "add to delete");
 		
 		// adds forge's log junk to be deleted
 		File workingDir = new File(System.getProperty("user.dir"));
@@ -30,13 +30,13 @@ public final class InitForgeModTab implements EnableListener, ObjectListener {
 		if (children == null) return;
 		for (File child : children) {
 			if (child.getName().contains("forge_") && child.getName().endsWith(".jar.log")) {
-				enableActionEvent.getBaseConsole().push(child, "add to delete");
+				enableEvent.getBaseConsole().push(child, "add to delete");
 			}
 		}
 	}
 	
 	@Override
-	public final void objectReceived(final SentObjectEvent e, final BaseConsole baseConsole) {
+	public final void objectReceived(final ObjectEvent e, final BaseConsole baseConsole) {
 		
 		if (e.getMessage().equals("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
 			
