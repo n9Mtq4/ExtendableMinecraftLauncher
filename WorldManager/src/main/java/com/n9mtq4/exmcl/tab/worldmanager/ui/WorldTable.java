@@ -4,6 +4,7 @@ import net.minecraft.launcher.Launcher;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import java.io.File;
 
 /**
  * Created by will on 9/2/15 at 11:20 PM.
@@ -18,6 +19,19 @@ public final class WorldTable extends JTable {
 		setModel(model);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setFillsViewportHeight(true);
+		setDragEnabled(false);
+	}
+	
+	public final File getSelectedWorld() {
+		return new File(model.getSavesDir(), (String) model.getValueAt(getSelectedRow(), 1));
+	}
+	
+	public final void refresh() {
+		model.refresh();
+	}
+	
+	public final WorldTableModel getWorldTableModel() {
+		return model;
 	}
 	
 }

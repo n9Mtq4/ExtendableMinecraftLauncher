@@ -1,9 +1,11 @@
 package com.n9mtq4.exmcl.tab.worldmanager.ui;
 
+import com.n9mtq4.exmcl.tab.worldmanager.WorldManagerUtils;
 import net.minecraft.launcher.Launcher;
 
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -11,15 +13,20 @@ import java.util.ArrayList;
  */
 public final class WorldTableModel extends DefaultTableModel {
 	
-	private static File worldDir;
+	private static final String[] TITLES = {"World Name", "File Name"};
 	
+	private File savesDir;
 	private Launcher launcher;
-	private ArrayList<String> worldDirs;
+	private ArrayList<String[]> worldList;
 	
 	public WorldTableModel(Launcher launcher) {
 		this.launcher = launcher;
 		com.mojang.launcher.Launcher launcher1 = launcher.getLauncher();
-		worldDir = new File(launcher1.getWorkingDirectory(), "saves");
+		savesDir = new File(launcher1.getWorkingDirectory(), "saves");
+		updateWorldList();
+	}
+	
+	public final void refresh() {
 		updateWorldList();
 	}
 	
@@ -29,27 +36,55 @@ public final class WorldTableModel extends DefaultTableModel {
 	}
 	
 	@Override
+	public int getColumnCount() {
+		return TITLES.length;
+	}
+	
+	@Override
+	public int getRowCount() {
+		if (worldList == null) return 0;
+		return worldList.size();
+	}
+	
+	@Override
 	public final String getColumnName(int column) {
-		return "World Name";
+		return TITLES[column];
 	}
 	
 	@Override
 	public final Object getValueAt(int row, int column) {
-		
-		return worldDirs.get(row);
-		
+		return worldList.get(row)[column];
 	}
 	
 	private void updateWorldList() {
 		
-		File[] worlds = worldDir.listFiles();
-		this.worldDirs = new ArrayList<String>();
+		File[] worlds = savesDir.listFiles();
+		resetWorldList();
+		if (worlds == null) return;
 		for (File world : worlds) {
-			if (world.isDirectory()) worldDirs.add(world.getName());
+			try {
+				if (world.isDirectory()) {
+					String worldName = WorldManagerUtils.readWorldName(world);
+					worldList.add(new String[]{worldName, world.getName()});
+				}
+			}catch (IOException e) {
+				System.out.println("Error reading world name: " + world.getAbsolutePath());
+				System.out.println("This might be NEI's weird way of saving its data inside saves/");
+			}
 		}
-		setRowCount(worlds.length - 1);
-		setColumnCount(1);
 		
+	}
+	
+	private void resetWorldList() {
+		this.worldList = new ArrayList<String[]>();
+	}
+	
+	public final File getSavesDir() {
+		return savesDir;
+	}
+	
+	public final ArrayList<String[]> getWorldList() {
+		return worldList;
 	}
 	
 }
