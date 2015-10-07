@@ -14,4 +14,4 @@ include 'AdvancedMCGameRunner'
 include 'WorldManager'
 include 'TabCreatorApi'
 include 'GameLaunchWrapper'
-
+include 'GameOutputManager'
