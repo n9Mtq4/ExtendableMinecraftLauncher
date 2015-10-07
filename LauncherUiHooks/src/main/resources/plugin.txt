@@ -16,7 +16,8 @@ com.n9mtq4.exmcl.uihooks.TabPanelHook
 com.n9mtq4.exmcl.uihooks.GameLaunchHookUnsafe
 
 # This listener is the safe version.
-# It works, but the unsafe version works well.
+# It works, but the unsafe version works well too,
+# and has more support for advanced things.
 # It is NOT compatible with the unsafe version
 # com.n9mtq4.exmcl.uihooks.GameLaunchHookSafe
 
