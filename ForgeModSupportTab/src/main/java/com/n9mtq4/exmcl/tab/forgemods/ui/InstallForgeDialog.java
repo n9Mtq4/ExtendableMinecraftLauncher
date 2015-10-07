@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,7 +56,13 @@ public final class InstallForgeDialog {
 		
 		frame = new JFrame("Select Forge Versions");
 		
-		table = new JTable(getListOfForges(), new Object[]{"MC Version", "Forge Version", "Url"});
+		DefaultTableModel model = new DefaultTableModel(getListOfForges(), new Object[]{"MC Versions", "Forge Versions", "URL"}) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		table = new JTable(model);
 		table.getTableHeader().setReorderingAllowed(false);
 		scroll = new JScrollPane(table);
 		select = new JButton("Download and Install");
