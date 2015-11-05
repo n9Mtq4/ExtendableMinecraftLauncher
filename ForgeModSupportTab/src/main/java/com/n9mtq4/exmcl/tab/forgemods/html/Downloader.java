@@ -15,6 +15,7 @@ import java.nio.channels.ReadableByteChannel;
 /**
  * Created by will on 7/28/15 at 10:43 PM.
  */
+@SuppressWarnings("Duplicates")
 public class Downloader {
 	
 	public static String getHTML(String urlToRead) {

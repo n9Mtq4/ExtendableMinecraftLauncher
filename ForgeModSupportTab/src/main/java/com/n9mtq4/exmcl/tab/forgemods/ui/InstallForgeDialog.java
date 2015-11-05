@@ -127,6 +127,7 @@ public final class InstallForgeDialog {
 		
 	}
 	
+	@SuppressWarnings("Duplicates")
 	private static Object[][] getListOfForges() {
 		
 		ArrayList<Object[]> versions = new ArrayList<Object[]>();

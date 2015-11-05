@@ -17,6 +17,7 @@ public final class ModData implements Serializable {
 	private static final long serialVersionUID = 3165243445562402989L;
 	private static final String modLocation = "data/forgemods.dat";
 	
+	@SuppressWarnings("Duplicates")
 	public static ModData load(Launcher launcher) {
 		
 		File file = new File(modLocation);
@@ -83,7 +84,7 @@ public final class ModData implements Serializable {
 		
 	}
 	
-	public final Object[] getProfilesNames() {
+	public final String[] getProfilesNames() {
 		
 		String[] profileNames = new String[this.profiles.size()];
 		for (int i = 0; i < this.profiles.size(); i++) {

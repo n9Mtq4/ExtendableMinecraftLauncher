@@ -134,6 +134,7 @@ public class ForgeModManager {
 	/**
 	 * http://stackoverflow.com/a/115086
 	 * */
+	@SuppressWarnings("Duplicates")
 	private static void copyFile(File sourceFile, File destFile) throws IOException {
 		if(!destFile.exists()) {
 			destFile.getParentFile().mkdirs();
