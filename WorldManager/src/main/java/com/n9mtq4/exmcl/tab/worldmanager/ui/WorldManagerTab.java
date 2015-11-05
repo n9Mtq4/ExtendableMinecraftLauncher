@@ -21,6 +21,8 @@ import java.io.IOException;
  */
 public final class WorldManagerTab extends JSplitPane {
 	
+	private static final String TITLE = "Worlds";
+	
 	private final LauncherTabPanel parent;
 	private final BaseConsole baseConsole;
 	
@@ -78,6 +80,12 @@ public final class WorldManagerTab extends JSplitPane {
 		moreInfo.addActionListener(listener);
 		
 		setLeftComponent(buttonArea);
+		
+	}
+	
+	public Object[] constructInfo() {
+		
+		return new Object[] {TITLE, this};
 		
 	}
 	

@@ -1,6 +1,7 @@
 group 'CustomMinecraftLauncher'
 
 apply plugin: 'java'
+apply plugin: 'kotlin'
 
 sourceCompatibility = 1.6
 
@@ -15,6 +16,7 @@ dependencies {
     compile files('../CustomMinecraftLauncher/libs/NBTEditor.jar')
     compile files('../CustomMinecraftLauncher/Minecraft.jar')
     compile files('../libs/launcher.jar')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 gradle.taskGraph.afterTask { Task task, TaskState state ->
@@ -26,4 +28,16 @@ gradle.taskGraph.afterTask { Task task, TaskState state ->
             into('../CustomMinecraftLauncher/plugins/')
         }
     }
+}
+buildscript {
+    ext.kotlin_version = '1.0.0-beta-1103'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
 }
