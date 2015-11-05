@@ -17,14 +17,14 @@ public final class GameLaunchHookSafe implements ObjectListener {
 	public final void objectReceived(final ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
-		if (!(e.getObject() instanceof JButton)) return;
+		if (!(e.getContained() instanceof JButton)) return;
 		
-		final JButton playButton = (JButton) e.getObject();
+		final JButton playButton = (JButton) e.getContained();
 		
 		playButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e1) {
-				e.getBaseConsole().push(e1, "gamelaunch");
+				e.getInitiatingBaseConsole().push(e1, "gamelaunch");
 			}
 		});
 		

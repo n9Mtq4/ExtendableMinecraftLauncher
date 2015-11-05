@@ -22,9 +22,9 @@ public final class LauncherOpenHook implements ObjectListener {
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("minecraftlauncher")) return;
-		if (!(e.getObject() instanceof Launcher)) return;
+		if (!(e.getContained() instanceof Launcher)) return;
 		
-		Launcher launcher = (Launcher) e.getObject();
+		Launcher launcher = (Launcher) e.getContained();
 		Profile currentProfile = launcher.getProfileManager().getSelectedProfile();
 		
 		if (!currentProfile.getLastVersionId().endsWith("_exmcl")) {

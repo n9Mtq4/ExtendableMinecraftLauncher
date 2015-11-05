@@ -17,12 +17,12 @@ public class PlayButtonHook implements ObjectListener {
 	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("playbuttonpanel")) return;
-		if (!(e.getObject() instanceof PlayButtonPanel)) return;
+		if (!(e.getContained() instanceof PlayButtonPanel)) return;
 		
-		PlayButtonPanel playButtonPanel = (PlayButtonPanel) e.getObject();
+		PlayButtonPanel playButtonPanel = (PlayButtonPanel) e.getContained();
 		JButton playButton = ReflectionHelper.getObject("playButton", playButtonPanel);
 		
-		e.getBaseConsole().push(playButton, "playbutton");
+		e.getInitiatingBaseConsole().push(playButton, "playbutton");
 		
 	}
 	

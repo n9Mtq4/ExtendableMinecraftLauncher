@@ -23,10 +23,10 @@ public final class Cleaner implements ObjectListener, RemovalListener {
 	public void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("add to delete")) return;
-		if (!(e.getObject() instanceof File)) return;
+		if (!(e.getContained() instanceof File)) return;
 		
-//		toDelete.add((File) e.getObject());
-		File file = (File) e.getObject();
+//		toDelete.add((File) e.getContained()());
+		File file = (File) e.getContained();
 		baseConsole.println("Added " + file.getAbsolutePath() + " to be deleted");
 		addToDelete(file);
 		

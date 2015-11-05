@@ -15,7 +15,7 @@ public final class InitSettingsTab implements ObjectListener {
 	@Override
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
-		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
+		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getContained() instanceof LauncherTabPanel) {
 			
 			SettingsTab settingsTab = new SettingsTab();
 			baseConsole.push(new Object[]{"Settings", settingsTab}, "addtab");

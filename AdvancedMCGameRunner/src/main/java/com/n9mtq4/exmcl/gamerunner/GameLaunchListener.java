@@ -43,16 +43,16 @@ public class GameLaunchListener implements EnableListener, ObjectListener {
 	private void tryLauncherGet(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("minecraftlauncher")) return;
-		if (!(e.getObject() instanceof Launcher)) return;
+		if (!(e.getContained() instanceof Launcher)) return;
 		
-		launcher = (Launcher) e.getObject();
+		launcher = (Launcher) e.getContained();
 		
 	}
 	
 	private void tryGameStart(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("gamelaunch")) return;
-		if (!(e.getObject() instanceof ActionEvent)) return;
+		if (!(e.getContained() instanceof ActionEvent)) return;
 		
 		boolean launchSuccessful = AdvancedGameLauncher.launch(launcher, baseConsole);
 		

@@ -40,7 +40,7 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 		if (tabPanel == null) {
 			tryToGetTabPanel(e, baseConsole);
 		}else {
-			if (e.getMessage().equalsIgnoreCase("tabsafe_lowlevel") && e.getObject() instanceof LauncherTabPanel) {
+			if (e.getMessage().equalsIgnoreCase("tabsafe_lowlevel") && e.getContained() instanceof LauncherTabPanel) {
 				baseConsole.push(new Object[]{"ExMCL", tabTab}, "addtab_lowlevel");
 				for (Object[] tab : unaddedTabs) tabTab.add((String) tab[0], (Component) tab[1]);
 				this.tabSafe = true;
@@ -59,15 +59,15 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 	private void tryCreatingTab(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("addtab")) return;
-		if (!(e.getObject() instanceof Object[])) return;
-		if (((Object[]) e.getObject()).length != 2) return;
-		final Object[] objs = (Object[]) e.getObject();
+		if (!(e.getContained() instanceof Object[])) return;
+		if (((Object[]) e.getContained()).length != 2) return;
+		final Object[] objs = (Object[]) e.getContained();
 		if (!(objs[0] instanceof String)) return;
 		if (!(objs[1] instanceof Component)) return;
 		
 		if (!tabSafe) {
 //			if it isn't safe, safe the tab for adding later.
-			unaddedTabs.add((Object[]) e.getObject());
+			unaddedTabs.add((Object[]) e.getContained());
 		}else {
 			tabTab.add((String) objs[0], (Component) objs[1]);
 		}
@@ -76,8 +76,8 @@ public final class TooManyTabs implements EnableListener, ObjectListener, TabCre
 	
 	private void tryToGetTabPanel(ObjectEvent e, BaseConsole baseConsole) {
 		if (!e.getMessage().equalsIgnoreCase("launchertabpanel")) return;
-		if (!(e.getObject() instanceof LauncherTabPanel)) return;
-		this.tabPanel = e.getObject();
+		if (!(e.getContained() instanceof LauncherTabPanel)) return;
+		this.tabPanel = e.getContained();
 	}
 	
 }

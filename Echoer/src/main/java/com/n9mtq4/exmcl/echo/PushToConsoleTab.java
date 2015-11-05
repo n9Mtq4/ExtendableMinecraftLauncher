@@ -40,9 +40,9 @@ public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 	@Override
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
-		if (!e.getMessage().equals("args") || !(e.getObject() instanceof String[])) return;
+		if (!e.getMessage().equals("args") || !(e.getContained() instanceof String[])) return;
 		
-		String[] args = (String[]) e.getObject();
+		String[] args = (String[]) e.getContained();
 		if (contains(args, "consoletabdebug")) {
 			this.baseConsole = baseConsole;
 			baseConsole.addConsoleUi(this);
@@ -62,9 +62,9 @@ public final class PushToConsoleTab implements ConsoleUI, ObjectListener {
 		@Override
 		public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 			
-			if (!e.getMessage().equals("launchertabpanel") || !(e.getObject() instanceof LauncherTabPanel)) return;
+			if (!e.getMessage().equals("launchertabpanel") || !(e.getContained() instanceof LauncherTabPanel)) return;
 			
-			LauncherTabPanel panel = (LauncherTabPanel) e.getObject();
+			LauncherTabPanel panel = (LauncherTabPanel) e.getContained();
 			PushToConsoleTab.this.consoleTab = panel.getConsole();
 			
 		}

@@ -22,13 +22,13 @@ public final class SwingComponentHook implements ObjectListener {
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("swinguserinterface")) return;
-		if (!(e.getObject() instanceof SwingUserInterface)) return;
+		if (!(e.getContained() instanceof SwingUserInterface)) return;
 		
-		JFrame frame = ReflectionHelper.getObject("frame", (SwingUserInterface) e.getObject());
+		JFrame frame = ReflectionHelper.getObject("frame", (SwingUserInterface) e.getContained());
 		
 		ArrayList<Component> components = getAllComponents(frame);
 		for (Component component : components) {
-			e.getBaseConsole().push(component, "allcomponents");
+			e.getInitiatingBaseConsole().push(component, "allcomponents");
 		}
 		
 		baseConsole.disableListenerAttribute(this);

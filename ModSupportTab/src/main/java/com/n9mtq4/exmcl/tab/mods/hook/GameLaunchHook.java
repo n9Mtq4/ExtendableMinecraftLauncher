@@ -15,7 +15,7 @@ public final class GameLaunchHook implements ObjectListener {
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("gamelaunch")) return;
-		if (!(e.getObject() instanceof ActionEvent)) return;
+		if (!(e.getContained() instanceof ActionEvent)) return;
 		
 //		Game was launched.
 		

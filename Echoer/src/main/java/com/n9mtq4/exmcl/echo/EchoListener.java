@@ -43,17 +43,17 @@ public final class EchoListener implements EnableListener, ObjectListener {
 	@Override
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
-		if (e.getObject() == null) {
-			e.getBaseConsole().println("Object: " + e.getMessage() + " | (null)");
+		if (e.getContained() == null) {
+			baseConsole.println("Object: " + e.getMessage() + " | (null)");
 			return;
 		}
 		
-		if (e.getObject() instanceof Object[]) {
-			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + Arrays.toString((Object[]) e.getObject()) + ")");
-		}else if (e.getObject() instanceof Collection) {
-			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + Arrays.toString(((Collection) e.getObject()).toArray()) + ")");
+		if (e.getContained() instanceof Object[]) {
+			baseConsole.println("Object: " + e.getMessage() + " | (" + Arrays.toString((Object[]) e.getContained()) + ")");
+		}else if (e.getContained() instanceof Collection) {
+			baseConsole.println("Object: " + e.getMessage() + " | (" + Arrays.toString(((Collection) e.getContained()).toArray()) + ")");
 		}else {
-			e.getBaseConsole().println("Object: " + e.getMessage() + " | (" + e.getObject().toString() + ")");
+			baseConsole.println("Object: " + e.getMessage() + " | (" + e.getContained().toString() + ")");
 		}
 		
 	}

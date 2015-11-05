@@ -32,9 +32,9 @@ public final class LowLevelTabCreator implements ObjectListener, TabCreator {
 	private void tryCreatingTab(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase(COMMAND_NAME)) return;
-		if (!(e.getObject() instanceof Object[])) return;
-		if (((Object[]) e.getObject()).length != 2) return;
-		final Object[] objs = (Object[]) e.getObject();
+		if (!(e.getContained() instanceof Object[])) return;
+		if (((Object[]) e.getContained()).length != 2) return;
+		final Object[] objs = (Object[]) e.getContained();
 		if (!(objs[0] instanceof String)) return;
 		if (!(objs[1] instanceof Component)) return;
 		
@@ -45,8 +45,8 @@ public final class LowLevelTabCreator implements ObjectListener, TabCreator {
 	
 	private void tryToGetTabPanel(ObjectEvent e, BaseConsole baseConsole) {
 		if (!e.getMessage().equalsIgnoreCase("launchertabpanel")) return;
-		if (!(e.getObject() instanceof LauncherTabPanel)) return;
-		this.tabPanel = e.getObject();
+		if (!(e.getContained() instanceof LauncherTabPanel)) return;
+		this.tabPanel = e.getContained();
 		baseConsole.push(tabPanel, "tabsafe_lowlevel");
 	}
 	

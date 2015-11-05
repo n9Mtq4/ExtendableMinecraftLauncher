@@ -20,9 +20,9 @@ public final class BootstrapArgListener implements ObjectListener {
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equals("args")) return;
-		if (!(e.getObject() instanceof String[])) return;
+		if (!(e.getContained() instanceof String[])) return;
 		
-		BootstrapMakerListener.args = (String[]) e.getObject();
+		BootstrapMakerListener.args = (String[]) e.getContained();
 		
 	}
 	

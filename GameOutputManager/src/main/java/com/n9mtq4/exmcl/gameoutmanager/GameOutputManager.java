@@ -41,7 +41,7 @@ public class GameOutputManager implements AdditionListener, EnableListener, Obje
 		
 		if (launcherTabPanel == null) {
 			tryGettingTabPanel(objectEvent, baseConsole);
-		}else if (objectEvent.getMessage().equals("tabsafe_lowlevel") && objectEvent.getObject() instanceof LauncherTabPanel) {
+		}else if (objectEvent.getMessage().equals("tabsafe_lowlevel") && objectEvent.getContained() instanceof LauncherTabPanel) {
 			tabSafe = true;
 		}else {
 			
@@ -70,8 +70,8 @@ public class GameOutputManager implements AdditionListener, EnableListener, Obje
 	
 	private void tryGettingTabPanel(ObjectEvent e, BaseConsole baseConsole) {
 		if (!e.getMessage().equalsIgnoreCase("launchertabpanel")) return;
-		if (!(e.getObject() instanceof LauncherTabPanel)) return;
-		this.launcherTabPanel = e.getObject();
+		if (!(e.getContained() instanceof LauncherTabPanel)) return;
+		this.launcherTabPanel = e.getContained();
 	}
 	
 	private void fireNewGameOutTabEvent(ObjectEvent event) {

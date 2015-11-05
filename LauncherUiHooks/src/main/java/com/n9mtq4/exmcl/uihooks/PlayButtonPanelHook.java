@@ -16,13 +16,13 @@ public final class PlayButtonPanelHook implements ObjectListener {
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("bottombarpanel")) return;
-		if (!(e.getObject() instanceof BottomBarPanel)) return;
+		if (!(e.getContained() instanceof BottomBarPanel)) return;
 		
-		BottomBarPanel bottomBarPanel = (BottomBarPanel) e.getObject();
+		BottomBarPanel bottomBarPanel = (BottomBarPanel) e.getContained();
 		
 		PlayButtonPanel playButtonPanel = ReflectionHelper.getObject("playButtonPanel", bottomBarPanel);
 		
-		e.getBaseConsole().push(playButtonPanel, "playbuttonpanel");
+		e.getInitiatingBaseConsole().push(playButtonPanel, "playbuttonpanel");
 		
 	}
 	

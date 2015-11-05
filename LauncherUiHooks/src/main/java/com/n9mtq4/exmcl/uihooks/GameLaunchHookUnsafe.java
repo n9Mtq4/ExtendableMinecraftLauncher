@@ -41,13 +41,13 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 		
 //		makes sure it is the playbutton
 		if (!e.getMessage().equalsIgnoreCase("playbutton")) return;
-		if (!(e.getObject() instanceof JButton)) return;
+		if (!(e.getContained() instanceof JButton)) return;
 		
 //		set the baseConsole
-		this.baseConsole = e.getBaseConsole();
+		this.baseConsole = e.getInitiatingBaseConsole();
 		
 //		get the button and listeners
-		JButton playButton = (JButton) e.getObject();
+		JButton playButton = (JButton) e.getContained();
 		this.listeners = playButton.getActionListeners();
 //		remove all the action listeners on the button.
 //		we will handle them
@@ -103,7 +103,7 @@ public final class GameLaunchHookUnsafe implements ActionListener, AdditionListe
 		public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 			
 			if (!e.getMessage().equalsIgnoreCase("gamelaunch")) return;
-			if (!(e.getObject() instanceof ActionEvent)) return;
+			if (!(e.getContained() instanceof ActionEvent)) return;
 			
 			parent.sentObjectEvent = e;
 			

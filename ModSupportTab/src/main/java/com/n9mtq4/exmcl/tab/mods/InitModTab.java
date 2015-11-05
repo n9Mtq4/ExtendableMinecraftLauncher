@@ -18,12 +18,12 @@ public final class InitModTab implements ObjectListener {
 	@Override
 	public final void objectReceived(final ObjectEvent e, final BaseConsole baseConsole) {
 		
-		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getObject() instanceof LauncherTabPanel) {
+		if (e.getMessage().equalsIgnoreCase("tabsafe") && e.getContained() instanceof LauncherTabPanel) {
 			
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
-					LauncherTabPanel tabPanel = (LauncherTabPanel) e.getObject();
+					LauncherTabPanel tabPanel = (LauncherTabPanel) e.getContained();
 					ModTab modTab = new ModTab(tabPanel.getMinecraftLauncher());
 					baseConsole.push(new Object[]{"Jar Mods", modTab}, "addtab");
 //					have to use reflection because the launcher isn't loaded when the classloader tries to implement RefreshedProfilesListener

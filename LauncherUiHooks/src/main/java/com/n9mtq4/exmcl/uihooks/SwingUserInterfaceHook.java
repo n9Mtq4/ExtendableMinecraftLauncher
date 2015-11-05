@@ -19,13 +19,13 @@ public final class SwingUserInterfaceHook implements ObjectListener {
 	public final void objectReceived(ObjectEvent e, BaseConsole baseConsole) {
 		
 		if (!e.getMessage().equalsIgnoreCase("minecraftlauncher")) return;
-		if (!(e.getObject() instanceof Launcher)) return;
+		if (!(e.getContained() instanceof Launcher)) return;
 		
-		SwingUserInterface ui = ReflectionHelper.getObject("userInterface", e.getObject());
+		SwingUserInterface ui = ReflectionHelper.getObject("userInterface", e.getContained());
 		
 		if (HOOK_INTERFACE) {
 			try {
-				Launcher launcher = (Launcher) e.getObject();
+				Launcher launcher = (Launcher) e.getContained();
 //			HookedSwingUserInterface hookedSwingUserInterface = new HookedSwingUserInterface(launcher, ((SwingUserInterface) launcher.getUserInterface()).getFrame(), baseConsole);
 				HookedSwingUserInterface hookedSwingUserInterface = new HookedSwingUserInterface(ui, baseConsole);
 				ReflectionHelper.setObject(hookedSwingUserInterface, "userInterface", launcher);
@@ -37,7 +37,7 @@ public final class SwingUserInterfaceHook implements ObjectListener {
 			}
 		}
 		
-		e.getBaseConsole().push(ui, "swinguserinterface");
+		e.getInitiatingBaseConsole().push(ui, "swinguserinterface");
 		
 	}
 	
